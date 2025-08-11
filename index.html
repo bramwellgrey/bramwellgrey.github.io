@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bramwell Grey Dispatch</title>
+    <title>Bramwell Grey Dispatch | Reliable Freight Dispatching Services</title>
+    <meta name="description" content="Professional freight dispatching services for owner-operators and small fleets. Get better rates, consistent loads, and 24/7 support.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d1117;
             overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
         }
         #hero-canvas {
             display: block;
@@ -24,151 +30,762 @@
             height: 100%;
             z-index: 0;
         }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .floating { 
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, 15px); }
+            100%   { transform: translate(0, -0px); }   
+        }
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(13,17,23,1) 0%, rgba(13,17,23,0) 100%);
+        }
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(59, 130, 246, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
     </style>
 </head>
 <body class="text-gray-200">
 
+    <!-- Floating Contact Buttons -->
+    <div class="fixed right-6 bottom-6 z-50 flex flex-col space-y-4">
+        <a href="tel:+15551234567" class="w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-xl transition-all transform hover:scale-110">
+            <i class="fas fa-phone-alt text-white text-xl"></i>
+        </a>
+        <a href="sms:+15551234567" class="w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-xl transition-all transform hover:scale-110">
+            <i class="fas fa-comment-alt text-white text-xl"></i>
+        </a>
+        <a href="https://wa.me/15551234567" class="w-14 h-14 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center shadow-xl transition-all transform hover:scale-110">
+            <i class="fab fa-whatsapp text-white text-xl"></i>
+        </a>
+    </div>
+
     <!-- Hero Section -->
-    <header class="h-screen flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-gray-900 text-center relative overflow-hidden">
+    <header class="h-screen flex items-center justify-center px-8 bg-gradient-to-br from-gray-900 to-gray-800 text-center relative overflow-hidden">
         <canvas id="hero-canvas"></canvas>
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
-                Freight Dispatching You Can Count On
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent z-1"></div>
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <div class="mb-6">
+                <span class="inline-block bg-blue-900/30 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full border border-blue-800/50">
+                    <i class="fas fa-truck mr-2"></i> Trusted by 150+ carriers
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 heading-font">
+                <span class="gradient-text">More Loads.</span> Less Hassle.
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                I’m Bramwell Grey, keeping carriers moving and brokers happy with on-time loads, clear communication, and fair rates.
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                I'm Bramwell Grey - your dedicated freight dispatcher. I find better rates, handle the paperwork, and keep your wheels turning 24/7.
             </p>
-            <a href="#contact" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
-                📦 Book Dispatch Now
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                    <i class="fas fa-paper-plane mr-2"></i> Get Dispatched Today
+                </a>
+                <a href="tel:+15551234567" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                    <i class="fas fa-phone-alt mr-2"></i> Call Now
+                </a>
+            </div>
+            <div class="mt-12 flex flex-wrap justify-center gap-4">
+                <div class="flex items-center bg-gray-800/50 px-4 py-2 rounded-full border border-gray-700">
+                    <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                    <span class="text-sm">No upfront fees</span>
+                </div>
+                <div class="flex items-center bg-gray-800/50 px-4 py-2 rounded-full border border-gray-700">
+                    <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                    <span class="text-sm">24/7 availability</span>
+                </div>
+                <div class="flex items-center bg-gray-800/50 px-4 py-2 rounded-full border border-gray-700">
+                    <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                    <span class="text-sm">5+ years experience</span>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-16">
 
+        <!-- Trust Badges Section -->
+        <section class="mb-20">
+            <div class="bg-gray-800/50 rounded-2xl p-6 border border-gray-700">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">150+</div>
+                        <div class="text-gray-400 text-center">Happy Carriers</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">98%</div>
+                        <div class="text-gray-400 text-center">On-Time Delivery</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">24/7</div>
+                        <div class="text-gray-400 text-center">Dispatch Support</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">5+</div>
+                        <div class="text-gray-400 text-center">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Me Section -->
-        <section id="about" class="bg-gray-800 p-8 md:p-12 rounded-2xl shadow-lg mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center">About Me</h2>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center">
-                With years in the freight industry, I know what drivers and brokers need most: reliable loads, great communication, and no wasted time. Whether you’re an owner-operator or a small fleet, I’ll keep you moving with profitable lanes and stress-free scheduling.
-            </p>
+        <section id="about" class="mb-20">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-green-500 rounded-2xl opacity-20 blur"></div>
+                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Truck driver on the road" class="relative rounded-2xl shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 heading-font">
+                        Why <span class="gradient-text">Choose Me</span> As Your Dispatcher
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        With over 5 years in the freight industry, I understand what keeps your business moving. I'm not just another dispatcher - I'm your partner on the road, working tirelessly to maximize your profits and minimize your headaches.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-500 text-white">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-300 font-medium">I negotiate <span class="text-white font-bold">10-15% higher rates</span> than most dispatchers by leveraging my broker relationships</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-500 text-white">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-300 font-medium">Available <span class="text-white font-bold">24/7/365</span> - breakdowns, delays, or last-minute loads? I've got you covered</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-500 text-white">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-300 font-medium">Transparent <span class="text-white font-bold">5% flat fee</span> - no hidden charges or surprises</p>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-truck-moving mr-2"></i> Get Started Now
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Services</h2>
+        <section id="services" class="mb-20">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-blue-900/30 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full border border-blue-800/50 mb-4">
+                    HOW I HELP
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 heading-font">
+                    <span class="gradient-text">Full-Service</span> Dispatching
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Everything you need to keep your truck moving and your business growing
+                </p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service Card 1 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl text-sky-400 mr-4">✔</span>
-                        <h3 class="text-xl font-semibold text-white">Load Booking</h3>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fas fa-search-dollar text-2xl"></i>
                     </div>
-                    <p class="text-gray-300">I find the right loads for your equipment type and location.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Load Procurement</h3>
+                    <p class="text-gray-400 mb-6">
+                        I find the best-paying loads for your equipment type and preferred lanes using my extensive broker network.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Daily load options in your preferred lanes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Specialized equipment expertise</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Backhaul optimization</span>
+                        </li>
+                    </ul>
                 </div>
+                
                 <!-- Service Card 2 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl text-sky-400 mr-4">✔</span>
-                        <h3 class="text-xl font-semibold text-white">Negotiation</h3>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fas fa-handshake text-2xl"></i>
                     </div>
-                    <p class="text-gray-300">I work to secure fair, profitable rates.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Rate Negotiation</h3>
+                    <p class="text-gray-400 mb-6">
+                        I leverage my broker relationships to secure rates that keep your profit margins healthy.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Average 12% higher rates than DIY</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Transparent rate confirmations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Fuel surcharge optimization</span>
+                        </li>
+                    </ul>
                 </div>
+                
                 <!-- Service Card 3 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl text-sky-400 mr-4">✔</span>
-                        <h3 class="text-xl font-semibold text-white">Paperwork</h3>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fas fa-file-invoice-dollar text-2xl"></i>
                     </div>
-                    <p class="text-gray-300">I handle the broker-carrier setup, rate confirmations, and PODs.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Paperwork & Compliance</h3>
+                    <p class="text-gray-400 mb-6">
+                        I handle all the tedious paperwork so you can focus on driving.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Broker-carrier setup</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Rate confirmations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>POD collection</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Invoice submission</span>
+                        </li>
+                    </ul>
                 </div>
+                
                 <!-- Service Card 4 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl text-sky-400 mr-4">✔</span>
-                        <h3 class="text-xl font-semibold text-white">Support</h3>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fas fa-headset text-2xl"></i>
                     </div>
-                    <p class="text-gray-300">I’m available during the run to handle issues so you can just drive.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">24/7 Support</h3>
+                    <p class="text-gray-400 mb-6">
+                        Your personal dispatch support anytime, anywhere.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Real-time load tracking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Breakdown assistance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Detention/lumper fee recovery</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mr-2 mt-1 text-xs"></i>
+                            <span>Emergency rerouting</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="mb-20">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-blue-900/30 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full border border-blue-800/50 mb-4">
+                    SIMPLE PROCESS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 heading-font">
+                    How <span class="gradient-text">It Works</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Get set up and rolling in less than 24 hours
+                </p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline bar -->
+                <div class="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-blue-500 to-green-500 -ml-0.5"></div>
+                
+                <!-- Steps container -->
+                <div class="space-y-16 md:space-y-0">
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 mb-8 md:mb-0 order-1 md:order-none">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 text-white font-bold mr-4">1</div>
+                                    <h3 class="text-xl font-bold text-white">Initial Consultation</h3>
+                                </div>
+                                <p class="text-gray-400">
+                                    We'll have a quick 15-minute call to discuss your equipment, preferred lanes, and business goals. This helps me understand how to best serve you.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="md:w-5/12 order-2 md:order-none">
+                            <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
+                                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Phone call consultation" class="rounded-lg w-full h-auto">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 mb-8 md:mb-0">
+                            <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
+                                <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Signing documents" class="rounded-lg w-full h-auto">
+                            </div>
+                        </div>
+                        <div class="md:w-5/12">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 text-white font-bold mr-4">2</div>
+                                    <h3 class="text-xl font-bold text-white">Quick Setup</h3>
+                                </div>
+                                <p class="text-gray-400">
+                                    I'll email you a simple agreement and get you set up in my system. Just send me your MC# and insurance, and we're ready to roll.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 mb-8 md:mb-0 order-1 md:order-none">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 text-white font-bold mr-4">3</div>
+                                    <h3 class="text-xl font-bold text-white">First Load Booked</h3>
+                                </div>
+                                <p class="text-gray-400">
+                                    Within 24 hours of setup, I'll have your first load booked at a rate you're happy with. I'll handle all communication with the broker.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="md:w-5/12 order-2 md:order-none">
+                            <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
+                                <img src="https://images.unsplash.com/photo-1601584115227-04f5e7c44e90?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Truck on the road" class="rounded-lg w-full h-auto">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Reviews Section -->
-        <section id="reviews" class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">What My Clients Say</h2>
+        <section id="reviews" class="mb-20">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-blue-900/30 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full border border-blue-800/50 mb-4">
+                    DRIVER TESTIMONIALS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 heading-font">
+                    What <span class="gradient-text">Drivers Say</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Don't just take my word for it - hear from carriers I work with
+                </p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Review Card 1 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md">
-                    <div class="text-2xl text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                    <p class="italic text-gray-300 mb-4">"Bramwell keeps my truck moving every week. Professional, fast, and dependable."</p>
-                    <p class="text-sm font-semibold text-white">– John, Owner-Operator</p>
+                <div class="testimonial-card bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D." class="w-12 h-12 rounded-full mr-4 border-2 border-blue-500">
+                        <div>
+                            <h4 class="font-bold text-white">John D.</h4>
+                            <div class="flex items-center">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-sm text-gray-400">Owner-Operator</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-300 mb-4 relative z-10">
+                        "Bramwell increased my weekly revenue by $1,200 on average compared to when I was booking my own loads. He's always available when I need him and handles all the broker headaches for me."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-400">
+                        <i class="fas fa-truck-moving mr-2"></i>
+                        <span>Flatbed - 2 years working together</span>
+                    </div>
                 </div>
+                
                 <!-- Review Card 2 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md">
-                    <div class="text-2xl text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                    <p class="italic text-gray-300 mb-4">"Clear communication and no surprises. Always a smooth process."</p>
-                    <p class="text-sm font-semibold text-white">– Maria, Broker</p>
+                <div class="testimonial-card bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria G." class="w-12 h-12 rounded-full mr-4 border-2 border-blue-500">
+                        <div>
+                            <h4 class="font-bold text-white">Maria G.</h4>
+                            <div class="flex items-center">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-sm text-gray-400">Small Fleet Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-300 mb-4 relative z-10">
+                        "I have 3 trucks and Bramwell handles dispatch for all of them. His ability to coordinate backhauls has saved me thousands in deadhead miles. The 24/7 support is a game-changer for my business."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-400">
+                        <i class="fas fa-truck-moving mr-2"></i>
+                        <span>Dry Van - 3 trucks</span>
+                    </div>
                 </div>
+                
                 <!-- Review Card 3 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md">
-                    <div class="text-2xl text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                    <p class="italic text-gray-300 mb-4">"Finally a dispatcher who works as hard as I do. Highly recommend."</p>
-                    <p class="text-sm font-semibold text-white">– Steve, Hotshot Driver</p>
+                <div class="testimonial-card bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Steve R." class="w-12 h-12 rounded-full mr-4 border-2 border-blue-500">
+                        <div>
+                            <h4 class="font-bold text-white">Steve R.</h4>
+                            <div class="flex items-center">
+                                <div class="text-yellow-400 mr-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-sm text-gray-400">Hotshot Driver</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-300 mb-4 relative z-10">
+                        "As a hotshot driver, finding good loads was always stressful. Since working with Bramwell, I'm making more money with less work. He even helped me recover $800 in detention fees I would've never gotten on my own."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-400">
+                        <i class="fas fa-truck-pickup mr-2"></i>
+                        <span>Hotshot - 40' gooseneck</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-comment-dots mr-2"></i> Join These Happy Carriers
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mb-20">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-blue-900/30 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full border border-blue-800/50 mb-4">
+                    COMMON QUESTIONS
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 heading-font">
+                    <span class="gradient-text">Frequently Asked</span> Questions
+                </h2>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="group bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-blue-500">
+                        <button class="flex items-center justify-between w-full p-6 text-left">
+                            <h3 class="text-lg font-semibold text-white">How much do your services cost?</h3>
+                            <div class="ml-4 text-blue-400 transition-transform duration-300 group-hover:rotate-180">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                            <p class="text-gray-400">
+                                I charge a simple 5% flat fee on the gross rate of each load. There are no upfront costs, monthly fees, or hidden charges. You only pay when you're earning.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="group bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-blue-500">
+                        <button class="flex items-center justify-between w-full p-6 text-left">
+                            <h3 class="text-lg font-semibold text-white">How quickly can you find me loads?</h3>
+                            <div class="ml-4 text-blue-400 transition-transform duration-300 group-hover:rotate-180">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                            <p class="text-gray-400">
+                                Most carriers get their first load within 24 hours of signing up. I maintain relationships with hundreds of brokers across all equipment types, so I can usually find quality loads quickly.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="group bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-blue-500">
+                        <button class="flex items-center justify-between w-full p-6 text-left">
+                            <h3 class="text-lg font-semibold text-white">What if I have an issue during a run?</h3>
+                            <div class="ml-4 text-blue-400 transition-transform duration-300 group-hover:rotate-180">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                            <p class="text-gray-400">
+                                I'm available 24/7 for any issues that arise - breakdowns, detention, lumper fees, you name it. I'll handle communication with the broker to resolve the issue and protect your revenue.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="group bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-blue-500">
+                        <button class="flex items-center justify-between w-full p-6 text-left">
+                            <h3 class="text-lg font-semibold text-white">Can I still book my own loads if I want?</h3>
+                            <div class="ml-4 text-blue-400 transition-transform duration-300 group-hover:rotate-180">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                            <p class="text-gray-400">
+                                Absolutely! Many of my carriers book their own loads when they find something great, and have me handle the rest. There's no exclusivity requirement.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="group bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden transition-all duration-300 hover:border-blue-500">
+                        <button class="flex items-center justify-between w-full p-6 text-left">
+                            <h3 class="text-lg font-semibold text-white">What information do you need to get started?</h3>
+                            <div class="ml-4 text-blue-400 transition-transform duration-300 group-hover:rotate-180">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                            <p class="text-gray-400">
+                                Just your MC number, insurance documents, and a quick chat about your equipment and preferences. I handle all the broker setups and paperwork from there.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mb-20">
+            <div class="bg-gradient-to-r from-blue-900/50 to-gray-900 rounded-2xl p-8 md:p-12 border border-gray-700 relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+                <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center heading-font">
+                        Ready to <span class="gradient-text">Make More Money</span> With Less Stress?
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto text-center mb-8">
+                        Stop wasting time hunting for loads and dealing with brokers. Let me handle the logistics while you focus on driving.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="tel:+15551234567" class="inline-block bg-white hover:bg-gray-100 text-gray-900 font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                            <i class="fas fa-phone-alt mr-2"></i> Call Now (555) 123-4567
+                        </a>
+                        <a href="#contact" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i> Email Me
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Booking/Contact Section -->
-        <section id="contact" class="bg-gray-800 p-8 md:p-12 rounded-2xl shadow-lg mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center">Ready to Roll? Let’s Get You Moving.</h2>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center mb-8">
-                Fill out the form below to get a call back and discuss your dispatching needs.
-            </p>
-            <form class="max-w-xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label for="name" class="block text-gray-400 mb-2">Name</label>
-                        <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+        <section id="contact" class="bg-gradient-to-b from-gray-800 to-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700 mb-16">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="inline-block bg-blue-900/30 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full border border-blue-800/50 mb-4">
+                        GET STARTED
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 heading-font">
+                        <span class="gradient-text">Let's Work</span> Together
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                        Fill out the form below and I'll call you within 2 hours to discuss your dispatching needs.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-12">
+                    <div class="md:w-1/2">
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-400 mb-2 font-medium">Your Name *</label>
+                                <input type="text" id="name" name="name" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-gray-400 mb-2 font-medium">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-400 mb-2 font-medium">Email Address *</label>
+                                <input type="email" id="email" name="email" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label for="equipment" class="block text-gray-400 mb-2 font-medium">Equipment Type *</label>
+                                <select id="equipment" name="equipment" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                    <option value="" disabled selected>Select your equipment</option>
+                                    <option value="dry_van">Dry Van (53')</option>
+                                    <option value="reefer">Reefer (53')</option>
+                                    <option value="flatbed">Flatbed (48'-53')</option>
+                                    <option value="step_deck">Step Deck</option>
+                                    <option value="hotshot">Hotshot (20'-40')</option>
+                                    <option value="box_truck">Box Truck (26')</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="trucks" class="block text-gray-400 mb-2 font-medium">Number of Trucks *</label>
+                                <select id="trucks" name="trucks" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                    <option value="1">1 Truck</option>
+                                    <option value="2-5">2-5 Trucks</option>
+                                    <option value="6-10">6-10 Trucks</option>
+                                    <option value="10+">10+ Trucks</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-gray-400 mb-2 font-medium">Anything else I should know?</label>
+                                <textarea id="message" name="message" rows="3" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-2"></i> Submit & Get a Call Back
+                            </button>
+                            
+                            <div id="form-message" class="mt-4 text-center text-sm text-gray-400">
+                                <!-- Form submission message will appear here -->
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <label for="company" class="block text-gray-400 mb-2">Company Name</label>
-                        <input type="text" id="company" name="company" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                    <div>
-                        <label for="equipment" class="block text-gray-400 mb-2">Equipment Type</label>
-                        <input type="text" id="equipment" name="equipment" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
-                    </div>
-                    <div>
-                        <label for="state" class="block text-gray-400 mb-2">Home State</label>
-                        <input type="text" id="state" name="state" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
-                    </div>
-                    <div>
-                        <label for="phone" class="block text-gray-400 mb-2">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-gray-400 mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                    
+                    <div class="md:w-1/2">
+                        <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700 h-full">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                                <i class="fas fa-info-circle text-blue-400 mr-3"></i> What Happens Next?
+                            </h3>
+                            <ol class="space-y-6">
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-500 text-white font-bold text-sm">
+                                            1
+                                        </div>
+                                    </div>
+                                    <p class="ml-3 text-gray-300">
+                                        <span class="font-semibold text-white">I'll call you within 2 hours</span> (or at your preferred time) to discuss your business needs
+                                    </p>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-500 text-white font-bold text-sm">
+                                            2
+                                        </div>
+                                    </div>
+                                    <p class="ml-3 text-gray-300">
+                                        <span class="font-semibold text-white">We'll review your equipment and preferences</span> to determine the best strategy
+                                    </p>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-500 text-white font-bold text-sm">
+                                            3
+                                        </div>
+                                    </div>
+                                    <p class="ml-3 text-gray-300">
+                                        <span class="font-semibold text-white">You'll get setup in my system</span> and receive your first load options within 24 hours
+                                    </p>
+                                </li>
+                            </ol>
+                            
+                            <div class="mt-10 pt-6 border-t border-gray-700">
+                                <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                    <i class="fas fa-headset text-blue-400 mr-3"></i> Prefer to Talk Now?
+                                </h4>
+                                <div class="space-y-3">
+                                    <a href="tel:+15551234567" class="flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all">
+                                        <i class="fas fa-phone-alt mr-3"></i> Call: (555) 123-4567
+                                    </a>
+                                    <a href="sms:+15551234567" class="flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all">
+                                        <i class="fas fa-sms mr-3"></i> Text Message
+                                    </a>
+                                    <a href="https://wa.me/15551234567" class="flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all">
+                                        <i class="fab fa-whatsapp mr-3"></i> WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-6">
-                    <label for="message" class="block text-gray-400 mb-2">Message / Special Requests</label>
-                    <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
-                    📞 Submit & Get a Call Back
-                </button>
-                <div id="form-message" class="mt-4 text-center text-sm text-gray-400">
-                  <!-- Form submission message will appear here -->
-                </div>
-            </form>
+            </div>
             <script>
-                // A simple client-side script for the form
+                // Enhanced form handling
                 document.querySelector('form').addEventListener('submit', function(e) {
                     e.preventDefault();
-                    document.getElementById('form-message').textContent = 'Thank you for your submission! Bramwell will be in touch shortly.';
-                    // In a real-world scenario, you would send this data to a backend service.
-                    // For a static GitHub Pages site, this is a good user experience placeholder.
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    
+                    // Show success message
+                    const formMessage = document.getElementById('form-message');
+                    formMessage.innerHTML = `
+                        <div class="bg-green-900/30 text-green-400 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-xl mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-white">Thanks, ${name}!</h4>
+                                    <p>I'll call you within 2 hours to discuss your dispatching needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // In a real implementation, you would send the form data to your backend here
+                    // For example using fetch() or connecting to a service like Formspree
                 });
             </script>
         </section>
@@ -176,9 +793,76 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 text-center py-8 px-4">
-        <p class="mb-2">📍 Nationwide Dispatch | Reliable | On-Time</p>
-        <p class="text-xl font-semibold text-white">Let’s keep your wheels — and business — rolling.</p>
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold text-white mb-2 heading-font">Bramwell Grey Dispatch</h3>
+                    <p class="text-gray-500">Reliable freight dispatching for owner-operators</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Load Booking</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Rate Negotiation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Paperwork Handling</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">24/7 Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Equipment</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Dry Van</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Reefer</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Flatbed</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Hotshot</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#reviews" class="hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <a href="tel:+15551234567" class="hover:text-white transition-colors">(555) 123-4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            <a href="mailto:dispatch@bramwellgrey.com" class="hover:text-white transition-colors">dispatch@bramwellgrey.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-blue-400"></i>
+                            <span>Nationwide Dispatch</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+                <p>&copy; 2023 Bramwell Grey Dispatch. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -190,25 +874,33 @@
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({
                 canvas: document.getElementById('hero-canvas'),
-                alpha: true
+                alpha: true,
+                antialias: true
             });
             renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
             renderer.setClearColor(0x000000, 0); // Transparent background
 
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0x404040);
+            // Improved lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 2);
             scene.add(ambientLight);
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
             directionalLight.position.set(5, 5, 5);
             scene.add(directionalLight);
+            
+            const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+            hemisphereLight.position.set(0, 5, 0);
+            scene.add(hemisphereLight);
 
-            // Create a simple truck model using primitive shapes
+            // Create a more detailed truck model
             const truck = new THREE.Group();
             
             // Truck body (main chassis)
             const bodyGeometry = new THREE.BoxGeometry(2, 0.5, 1);
             const bodyMaterial = new THREE.MeshPhongMaterial({
-                color: 0x4299e1
+                color: 0x4299e1,
+                shininess: 30
             });
             const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
             truck.add(body);
@@ -216,39 +908,102 @@
             // Truck cab
             const cabGeometry = new THREE.BoxGeometry(0.8, 0.8, 1);
             const cabMaterial = new THREE.MeshPhongMaterial({
-                color: 0x2b6cb0
+                color: 0x2b6cb0,
+                shininess: 30
             });
             const cab = new THREE.Mesh(cabGeometry, cabMaterial);
             cab.position.set(1, 0.3, 0);
             truck.add(cab);
 
-            // Wheels
-            const wheelGeometry = new THREE.CylinderGeometry(0.2, 0.2, 0.2, 16);
-            const wheelMaterial = new THREE.MeshPhongMaterial({
-                color: 0x1a202c
+            // Cab details
+            const windowGeometry = new THREE.BoxGeometry(0.7, 0.4, 0.01);
+            const windowMaterial = new THREE.MeshPhongMaterial({
+                color: 0x1e40af,
+                transparent: true,
+                opacity: 0.7
             });
-            const frontWheelLeft = new THREE.Mesh(wheelGeometry, wheelMaterial);
-            frontWheelLeft.rotation.z = Math.PI / 2;
+            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+            windowMesh.position.set(1, 0.5, 0.5);
+            truck.add(windowMesh);
+            
+            const windowMesh2 = windowMesh.clone();
+            windowMesh2.position.z = -0.5;
+            truck.add(windowMesh2);
+
+            // Wheels with more detail
+            const wheelGeometry = new THREE.CylinderGeometry(0.2, 0.2, 0.15, 32);
+            const wheelMaterial = new THREE.MeshPhongMaterial({
+                color: 0x1a202c,
+                shininess: 100
+            });
+            
+            const wheelTireGeometry = new THREE.TorusGeometry(0.2, 0.05, 16, 32);
+            const wheelTireMaterial = new THREE.MeshPhongMaterial({
+                color: 0x111827
+            });
+            
+            // Front wheels
+            const createWheel = () => {
+                const wheelGroup = new THREE.Group();
+                
+                const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
+                wheel.rotation.z = Math.PI / 2;
+                wheelGroup.add(wheel);
+                
+                const tire = new THREE.Mesh(wheelTireGeometry, wheelTireMaterial);
+                tire.rotation.x = Math.PI / 2;
+                tire.position.y = 0.075;
+                wheelGroup.add(tire);
+                
+                const tire2 = tire.clone();
+                tire2.position.y = -0.075;
+                wheelGroup.add(tire2);
+                
+                return wheelGroup;
+            };
+            
+            const frontWheelLeft = createWheel();
             frontWheelLeft.position.set(0.7, -0.3, 0.6);
             truck.add(frontWheelLeft);
 
-            const frontWheelRight = new THREE.Mesh(wheelGeometry, wheelMaterial);
-            frontWheelRight.rotation.z = Math.PI / 2;
+            const frontWheelRight = createWheel();
             frontWheelRight.position.set(0.7, -0.3, -0.6);
             truck.add(frontWheelRight);
 
-            const backWheelLeft = new THREE.Mesh(wheelGeometry, wheelMaterial);
-            backWheelLeft.rotation.z = Math.PI / 2;
+            const backWheelLeft = createWheel();
             backWheelLeft.position.set(-0.7, -0.3, 0.6);
             truck.add(backWheelLeft);
 
-            const backWheelRight = new THREE.Mesh(wheelGeometry, wheelMaterial);
-            backWheelRight.rotation.z = Math.PI / 2;
+            const backWheelRight = createWheel();
             backWheelRight.position.set(-0.7, -0.3, -0.6);
             truck.add(backWheelRight);
 
+            // Add some cargo
+            const cargoGeometry = new THREE.BoxGeometry(1.5, 0.6, 0.8);
+            const cargoMaterial = new THREE.MeshPhongMaterial({
+                color: 0x4b5563,
+                shininess: 20
+            });
+            const cargo = new THREE.Mesh(cargoGeometry, cargoMaterial);
+            cargo.position.set(-0.5, 0.5, 0);
+            truck.add(cargo);
+
+            // Add some straps
+            const strapGeometry = new THREE.BoxGeometry(1.6, 0.02, 0.02);
+            const strapMaterial = new THREE.MeshPhongMaterial({
+                color: 0x9ca3af
+            });
+            
+            for (let i = 0; i < 3; i++) {
+                const strap = new THREE.Mesh(strapGeometry, strapMaterial);
+                strap.position.set(-0.5, 0.7 + i * 0.1, 0);
+                strap.rotation.z = Math.PI / 4;
+                truck.add(strap);
+            }
+
             scene.add(truck);
-            camera.position.z = 3;
+            camera.position.z = 3.5;
+            camera.position.y = 1;
 
             // Mouse interaction variables
             let isDragging = false;
@@ -275,7 +1030,7 @@
                     y: event.clientY - previousMousePosition.y
                 };
 
-                const rotationSpeed = 0.01;
+                const rotationSpeed = 0.005;
                 truck.rotation.y += deltaMove.x * rotationSpeed;
                 truck.rotation.x += deltaMove.y * rotationSpeed;
 
@@ -296,12 +1051,29 @@
 
                 // Auto-rotate the truck slowly when not being dragged
                 if (!isDragging) {
-                    truck.rotation.y += 0.005;
+                    truck.rotation.y += 0.002;
                 }
+
+                // Rotate wheels when truck is moving
+                const wheelSpeed = 0.05;
+                frontWheelLeft.rotation.x += wheelSpeed;
+                frontWheelRight.rotation.x += wheelSpeed;
+                backWheelLeft.rotation.x += wheelSpeed;
+                backWheelRight.rotation.x += wheelSpeed;
 
                 renderer.render(scene, camera);
             }
             animate();
+            
+            // Add smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
         };
     </script>
 
