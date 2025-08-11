@@ -59,8 +59,9 @@
             position: relative;
             overflow: hidden;
         }
+        /* Corrected CSS: Changed the invalid content string to a valid Unicode character */
         .testimonial-card::before {
-            content: """;
+            content: "“";
             position: absolute;
             top: 20px;
             left: 20px;
@@ -535,7 +536,8 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </button>
-                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                        <!-- Added a simple script for toggling the FAQ content for better user experience -->
+                        <div class="px-6 pb-6 pt-0 hidden" id="faq-answer-1">
                             <p class="text-gray-400">
                                 I charge a simple 5% flat fee on the gross rate of each load. There are no upfront costs, monthly fees, or hidden charges. You only pay when you're earning.
                             </p>
@@ -550,7 +552,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </button>
-                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                        <div class="px-6 pb-6 pt-0 hidden" id="faq-answer-2">
                             <p class="text-gray-400">
                                 Most carriers get their first load within 24 hours of signing up. I maintain relationships with hundreds of brokers across all equipment types, so I can usually find quality loads quickly.
                             </p>
@@ -565,7 +567,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </button>
-                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                        <div class="px-6 pb-6 pt-0 hidden" id="faq-answer-3">
                             <p class="text-gray-400">
                                 I'm available 24/7 for any issues that arise - breakdowns, detention, lumper fees, you name it. I'll handle communication with the broker to resolve the issue and protect your revenue.
                             </p>
@@ -580,7 +582,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </button>
-                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                        <div class="px-6 pb-6 pt-0 hidden" id="faq-answer-4">
                             <p class="text-gray-400">
                                 Absolutely! Many of my carriers book their own loads when they find something great, and have me handle the rest. There's no exclusivity requirement.
                             </p>
@@ -595,7 +597,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </button>
-                        <div class="px-6 pb-6 pt-0 hidden group-focus:block">
+                        <div class="px-6 pb-6 pt-0 hidden" id="faq-answer-5">
                             <p class="text-gray-400">
                                 Just your MC number, insurance documents, and a quick chat about your equipment and preferences. I handle all the broker setups and paperwork from there.
                             </p>
@@ -1072,6 +1074,26 @@
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
+                });
+            });
+
+            // FAQ accordion functionality
+            document.querySelectorAll('.group button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const isHidden = answer.classList.contains('hidden');
+                    
+                    // Close all other answers
+                    document.querySelectorAll('.group div[id^="faq-answer-"]').forEach(faqAnswer => {
+                        faqAnswer.classList.add('hidden');
+                        faqAnswer.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    });
+                    
+                    // Toggle the clicked answer and its icon
+                    if (isHidden) {
+                        answer.classList.remove('hidden');
+                        button.querySelector('i').classList.add('rotate-180');
+                    }
                 });
             });
         };
