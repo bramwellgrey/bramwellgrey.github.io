@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bramwell Grey Dispatch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            overflow-x: hidden;
+        }
+        #hero-canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Hero Section -->
+    <header class="h-screen flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-gray-900 text-center relative overflow-hidden">
+        <canvas id="hero-canvas"></canvas>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                Freight Dispatching You Can Count On
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                I’m Bramwell Grey, keeping carriers moving and brokers happy with on-time loads, clear communication, and fair rates.
+            </p>
+            <a href="#contact" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                📦 Book Dispatch Now
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- About Me Section -->
+        <section id="about" class="bg-gray-800 p-8 md:p-12 rounded-2xl shadow-lg mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center">About Me</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center">
+                With years in the freight industry, I know what drivers and brokers need most: reliable loads, great communication, and no wasted time. Whether you’re an owner-operator or a small fleet, I’ll keep you moving with profitable lanes and stress-free scheduling.
+            </p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl text-sky-400 mr-4">✔</span>
+                        <h3 class="text-xl font-semibold text-white">Load Booking</h3>
+                    </div>
+                    <p class="text-gray-300">I find the right loads for your equipment type and location.</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl text-sky-400 mr-4">✔</span>
+                        <h3 class="text-xl font-semibold text-white">Negotiation</h3>
+                    </div>
+                    <p class="text-gray-300">I work to secure fair, profitable rates.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl text-sky-400 mr-4">✔</span>
+                        <h3 class="text-xl font-semibold text-white">Paperwork</h3>
+                    </div>
+                    <p class="text-gray-300">I handle the broker-carrier setup, rate confirmations, and PODs.</p>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl text-sky-400 mr-4">✔</span>
+                        <h3 class="text-xl font-semibold text-white">Support</h3>
+                    </div>
+                    <p class="text-gray-300">I’m available during the run to handle issues so you can just drive.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">What My Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="text-2xl text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="italic text-gray-300 mb-4">"Bramwell keeps my truck moving every week. Professional, fast, and dependable."</p>
+                    <p class="text-sm font-semibold text-white">– John, Owner-Operator</p>
+                </div>
+                <!-- Review Card 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="text-2xl text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="italic text-gray-300 mb-4">"Clear communication and no surprises. Always a smooth process."</p>
+                    <p class="text-sm font-semibold text-white">– Maria, Broker</p>
+                </div>
+                <!-- Review Card 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="text-2xl text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="italic text-gray-300 mb-4">"Finally a dispatcher who works as hard as I do. Highly recommend."</p>
+                    <p class="text-sm font-semibold text-white">– Steve, Hotshot Driver</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking/Contact Section -->
+        <section id="contact" class="bg-gray-800 p-8 md:p-12 rounded-2xl shadow-lg mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 text-center">Ready to Roll? Let’s Get You Moving.</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto text-center mb-8">
+                Fill out the form below to get a call back and discuss your dispatching needs.
+            </p>
+            <form class="max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-gray-400 mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                    </div>
+                    <div>
+                        <label for="company" class="block text-gray-400 mb-2">Company Name</label>
+                        <input type="text" id="company" name="company" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    </div>
+                    <div>
+                        <label for="equipment" class="block text-gray-400 mb-2">Equipment Type</label>
+                        <input type="text" id="equipment" name="equipment" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                    </div>
+                    <div>
+                        <label for="state" class="block text-gray-400 mb-2">Home State</label>
+                        <input type="text" id="state" name="state" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-gray-400 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-400 mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-gray-400 mb-2">Message / Special Requests</label>
+                    <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                    📞 Submit & Get a Call Back
+                </button>
+                <div id="form-message" class="mt-4 text-center text-sm text-gray-400">
+                  <!-- Form submission message will appear here -->
+                </div>
+            </form>
+            <script>
+                // A simple client-side script for the form
+                document.querySelector('form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    document.getElementById('form-message').textContent = 'Thank you for your submission! Bramwell will be in touch shortly.';
+                    // In a real-world scenario, you would send this data to a backend service.
+                    // For a static GitHub Pages site, this is a good user experience placeholder.
+                });
+            </script>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-8 px-4">
+        <p class="mb-2">📍 Nationwide Dispatch | Reliable | On-Time</p>
+        <p class="text-xl font-semibold text-white">Let’s keep your wheels — and business — rolling.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            // --- three.js setup for the truck animation ---
+
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('hero-canvas'),
+                alpha: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            // Create a simple truck model using primitive shapes
+            const truck = new THREE.Group();
+            
+            // Truck body (main chassis)
+            const bodyGeometry = new THREE.BoxGeometry(2, 0.5, 1);
+            const bodyMaterial = new THREE.MeshPhongMaterial({
+                color: 0x4299e1
+            });
+            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+            truck.add(body);
+
+            // Truck cab
+            const cabGeometry = new THREE.BoxGeometry(0.8, 0.8, 1);
+            const cabMaterial = new THREE.MeshPhongMaterial({
+                color: 0x2b6cb0
+            });
+            const cab = new THREE.Mesh(cabGeometry, cabMaterial);
+            cab.position.set(1, 0.3, 0);
+            truck.add(cab);
+
+            // Wheels
+            const wheelGeometry = new THREE.CylinderGeometry(0.2, 0.2, 0.2, 16);
+            const wheelMaterial = new THREE.MeshPhongMaterial({
+                color: 0x1a202c
+            });
+            const frontWheelLeft = new THREE.Mesh(wheelGeometry, wheelMaterial);
+            frontWheelLeft.rotation.z = Math.PI / 2;
+            frontWheelLeft.position.set(0.7, -0.3, 0.6);
+            truck.add(frontWheelLeft);
+
+            const frontWheelRight = new THREE.Mesh(wheelGeometry, wheelMaterial);
+            frontWheelRight.rotation.z = Math.PI / 2;
+            frontWheelRight.position.set(0.7, -0.3, -0.6);
+            truck.add(frontWheelRight);
+
+            const backWheelLeft = new THREE.Mesh(wheelGeometry, wheelMaterial);
+            backWheelLeft.rotation.z = Math.PI / 2;
+            backWheelLeft.position.set(-0.7, -0.3, 0.6);
+            truck.add(backWheelLeft);
+
+            const backWheelRight = new THREE.Mesh(wheelGeometry, wheelMaterial);
+            backWheelRight.rotation.z = Math.PI / 2;
+            backWheelRight.position.set(-0.7, -0.3, -0.6);
+            truck.add(backWheelRight);
+
+            scene.add(truck);
+            camera.position.z = 3;
+
+            // Mouse interaction variables
+            let isDragging = false;
+            let previousMousePosition = {
+                x: 0,
+                y: 0
+            };
+
+            // Event listeners for mouse interaction
+            renderer.domElement.addEventListener('mousedown', (event) => {
+                isDragging = true;
+                previousMousePosition.x = event.clientX;
+                previousMousePosition.y = event.clientY;
+            });
+
+            renderer.domElement.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            renderer.domElement.addEventListener('mousemove', (event) => {
+                if (!isDragging) return;
+                const deltaMove = {
+                    x: event.clientX - previousMousePosition.x,
+                    y: event.clientY - previousMousePosition.y
+                };
+
+                const rotationSpeed = 0.01;
+                truck.rotation.y += deltaMove.x * rotationSpeed;
+                truck.rotation.x += deltaMove.y * rotationSpeed;
+
+                previousMousePosition.x = event.clientX;
+                previousMousePosition.y = event.clientY;
+            });
+
+            // Handle window resizing
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Auto-rotate the truck slowly when not being dragged
+                if (!isDragging) {
+                    truck.rotation.y += 0.005;
+                }
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        };
+    </script>
+
+</body>
+</html>
