@@ -1,252 +1,339 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic: The World of Truck Dispatching</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Energetic & Playful -->
-    <!-- Application Structure Plan: The infographic follows a narrative flow designed for intuitive discovery. It starts with a high-level "Hook" (What is a Dispatcher?), moves to the "How" (The Curriculum), and finishes with the "Why" (Career & Earnings). This structure guides the user logically from understanding the role to seeing the benefits. It uses a single-column, scroll-based layout, which is ideal for a narrative infographic, with distinct visual sections to prevent monotony. This is more effective for storytelling than a complex dashboard. -->
-    <!-- Visualization & Content Choices: 
-        - Report Info: Dispatcher's Daily Tasks -> Goal: Inform -> Viz/Method: Four large, icon-based stat cards. -> Interaction: Subtle hover animations. -> Justification: Breaks down the core role into four clear, easily digestible pillars. The visual separation makes the information scannable. -> Library/Method: HTML/Tailwind with Unicode characters.
-        - Report Info: Course Curriculum -> Goal: Organize/Show a Process -> Viz/Method: A vertical timeline built with HTML/Tailwind. -> Interaction: None, focus is on the flow. -> Justification: Presents the curriculum as a step-by-step learning journey, which is more engaging and logical than a simple list. -> Library/Method: HTML/Tailwind.
-        - Report Info: Salary Data -> Goal: Compare/Inform -> Viz/Method: A large "Single Big Number" for the average salary, followed by a horizontal bar chart. -> Interaction: Chart.js tooltips on hover. -> Justification: The big number provides an immediate, impactful statistic. The bar chart is the clearest and most standard way to compare the different salary tiers, showing potential for growth. -> Library/Method: Chart.js.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-        }
-        .brand-text { color: #073B4C; }
-        .brand-text-light { color: #118AB2; }
-        .accent-green { background-color: #06D6A0; }
-        .accent-yellow { background-color: #FFD166; }
-        .accent-red { background-color: #FF6B6B; }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 1.25rem;
-            left: -0.875rem;
-            width: 1.75rem;
-            height: 1.75rem;
-            border-radius: 9999px;
-            background-color: #118AB2;
-            border: 4px solid #f8fafc;
-            z-index: 10;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 50vh;
-        }
-         @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Truck Dispatching Course</title>
+  <meta name="description" content="Comprehensive, practical course to become a professional truck dispatcher in the USA. Includes modules, illustrations, templates, quizzes and resources for launching a dispatch career or business." />
+  <style>
+    :root{--accent:#0b6efd;--muted:#6b7280;--bg:#0f1724;--card:#0b1220}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;font-size:16px;color:#0f1724;background:#f8fafc}
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:14px;color:var(--muted);text-decoration:none}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:22px}
+    .card{background:white;border-radius:12px;padding:22px;box-shadow:0 6px 24px rgba(12,18,30,0.06)}
+    h1{margin:0;font-size:26px}
+    p.lead{color:var(--muted);margin-top:10px}
+    .cta{margin-top:18px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:none;cursor:pointer}
+    .outline{background:transparent;border:1px solid #e6eefc;color:var(--accent);padding:9px 12px;border-radius:8px}
+    .modules{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+    .module{border-left:4px solid var(--accent);padding:12px 14px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff)}
+    .svg-ill{width:100%;height:240px;border-radius:8px;overflow:hidden}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .small{font-size:13px;color:var(--muted)}
+    details{background:#fcfdff;padding:12px;border-radius:8px}
+    summary{font-weight:600;cursor:pointer}
+    pre{background:#0b1220;color:#e6f0ff;padding:12px;border-radius:8px;overflow:auto}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:980px){.hero{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(1,1fr)}}
+  </style>
 </head>
-<body class="text-gray-700">
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">TD</div>
+        <div>
+          <div style="font-weight:700">Professional Truck Dispatching</div>
+          <div class="small">Launch a dispatcher career or scale your dispatch business — USA-focused</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#syllabus">Syllabus</a>
+        <a href="#resources">Resources</a>
+        <a href="#instructor">Instructor</a>
+      </nav>
+    </header>
 
-    <div class="container mx-auto px-4 py-8 md:py-16">
+    <section class="hero">
+      <div class="card">
+        <h1>Professional Truck Dispatching Course</h1>
+        <p class="lead">A practical, step-by-step course that teaches you how to dispatch trucks across the USA — from paperwork, load-finding, and carrier compliance, to negotiation, software workflows, and starting your own dispatch business.</p>
 
-        <!-- Section 1: Introduction -->
-        <section class="text-center">
-            <h1 class="text-4xl md:text-6xl font-bold brand-text">The World of Truck Dispatching</h1>
-            <p class="mt-4 max-w-3xl mx-auto text-lg">A dispatcher is the nerve center of the logistics world. This guide breaks down the role, the required training, and the rewarding career that awaits.</p>
-        </section>
+        <div class="cta">
+          <button class="btn">Start Course — View Syllabus</button>
+          <button class="outline" style="margin-left:10px">Download Curriculum (PDF)</button>
+        </div>
 
-        <!-- Section 2: What is a Dispatcher? -->
-        <section class="mt-16 md:mt-24">
-            <div class="text-center">
-                <h2 class="text-3xl md:text-4xl font-bold brand-text-light">The Command Center</h2>
-                <p class="mt-3 max-w-2xl mx-auto text-md">A dispatcher coordinates the complex dance of moving freight. They are master planners, expert communicators, and quick problem-solvers. Here are their four core responsibilities.</p>
-            </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-5xl mb-4">🗺️</div>
-                    <h3 class="text-xl font-bold brand-text">Planning & Scheduling</h3>
-                    <p class="mt-2 text-sm">Creating hyper-efficient routes and schedules to save time and fuel, while navigating traffic and weather.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-5xl mb-4">📦</div>
-                    <h3 class="text-xl font-bold brand-text">Load Management</h3>
-                    <p class="mt-2 text-sm">Using load boards and industry connections to find and book profitable freight, then negotiating the best rates.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-5xl mb-4">📞</div>
-                    <h3 class="text-xl font-bold brand-text">Driver Communication</h3>
-                    <p class="mt-2 text-sm">Serving as the driver's lifeline, providing real-time updates and resolving any on-the-road issues that arise.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-5xl mb-4">📋</div>
-                    <h3 class="text-xl font-bold brand-text">Paperwork & Compliance</h3>
-                    <p class="mt-2 text-sm">Managing all essential documents and ensuring every operation strictly adheres to federal transport regulations.</p>
-                </div>
-            </div>
-        </section>
+        <div class="modules">
+          <div class="module">
+            <strong>Who this course is for</strong>
+            <div class="small">New dispatchers, owner-operators wanting to self-dispatch, logistics assistants, and entrepreneurs building a dispatch agency.</div>
+          </div>
+          <div class="module">
+            <strong>Outcome</strong>
+            <div class="small">By the end you'll be able to take a freight lead, create a full dispatch plan, communicate with carriers & brokers, use TMS and load boards, calculate rates & margins, and launch your own dispatch service.</div>
+          </div>
+          <div class="module">
+            <strong>Course format</strong>
+            <div class="small">30+ lessons, 6 modules, real-world templates, quizzes, video demos (links), and 3 capstone assignments.</div>
+          </div>
+        </div>
 
-        <!-- Section 3: The Curriculum -->
-        <section class="mt-16 md:mt-24">
-             <div class="text-center">
-                <h2 class="text-3xl md:text-4xl font-bold brand-text-light">Your Learning Blueprint</h2>
-                <p class="mt-3 max-w-2xl mx-auto text-md">A comprehensive course prepares you for the real-world demands of dispatching. The curriculum is a journey that builds your skills step-by-step, from industry basics to expert-level negotiation.</p>
-            </div>
-            <div class="mt-12 max-w-3xl mx-auto">
-                <div class="relative pl-8 border-l-4 border-gray-300">
-                    <!-- Timeline Item 1 -->
-                    <div class="timeline-item mb-12 relative">
-                        <h4 class="text-xl font-bold brand-text">Introduction to the Trucking Industry</h4>
-                        <p class="mt-1">Learn the key players, equipment types, and essential terminology to speak the language of logistics.</p>
-                    </div>
-                    <!-- Timeline Item 2 -->
-                    <div class="timeline-item mb-12 relative">
-                        <h4 class="text-xl font-bold brand-text">Regulations and Compliance</h4>
-                        <p class="mt-1">Master the rules of the road, including Hours of Service (HOS) and electronic logging devices (ELDs).</p>
-                    </div>
-                    <!-- Timeline Item 3 -->
-                    <div class="timeline-item mb-12 relative">
-                        <h4 class="text-xl font-bold brand-text">Dispatching Tools and Technology</h4>
-                        <p class="mt-1">Get hands-on training with industry-standard software like load boards, GPS, and routing systems.</p>
-                    </div>
-                    <!-- Timeline Item 4 -->
-                    <div class="timeline-item mb-12 relative">
-                        <h4 class="text-xl font-bold brand-text">Load Hunting and Booking</h4>
-                        <p class="mt-1">Develop strategies to find and secure the most profitable loads for your drivers or clients.</p>
-                    </div>
-                    <!-- Timeline Item 5 -->
-                    <div class="timeline-item mb-12 relative">
-                        <h4 class="text-xl font-bold brand-text">Negotiation Skills</h4>
-                        <p class="mt-1">Learn techniques to effectively negotiate with freight brokers to maximize rates and profitability.</p>
-                    </div>
-                     <!-- Timeline Item 6 -->
-                    <div class="timeline-item mb-12 relative">
-                        <h4 class="text-xl font-bold brand-text">Administrative & Financial Management</h4>
-                        <p class="mt-1">Understand the paperwork, invoicing, and financial basics of running a dispatching business.</p>
-                    </div>
-                     <!-- Timeline Item 7 -->
-                    <div class="timeline-item relative">
-                        <h4 class="text-xl font-bold brand-text">Communication and Problem-Solving</h4>
-                        <p class="mt-1">Develop the critical soft skills needed to handle any situation, from driver issues to unexpected delays.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <hr style="margin:18px 0;border:none;border-top:1px solid #eef6ff" />
 
-        <!-- Section 4: Career & Earnings -->
-        <section class="mt-16 md:mt-24">
-            <div class="text-center">
-                <h2 class="text-3xl md:text-4xl font-bold brand-text-light">The Payoff: Career & Earnings</h2>
-                <p class="mt-3 max-w-2xl mx-auto text-md">A dispatching certification opens doors to various career paths, from working at a large carrier to starting your own business. Here's a look at the earning potential you can expect.</p>
-            </div>
-            <div class="mt-12 bg-white p-6 md:p-10 rounded-lg shadow-lg">
-                <div class="text-center">
-                    <p class="text-lg text-gray-600">Average Starting Salary</p>
-                    <p class="text-6xl md:text-7xl font-bold brand-text my-2">$44,000</p>
-                    <p class="text-lg text-gray-600">Per Year</p>
-                </div>
-                <div class="mt-12">
-                    <h4 class="text-center text-xl font-bold brand-text mb-4">Potential for Growth</h4>
-                    <div class="chart-container">
-                        <canvas id="salaryChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <h3>Quick syllabus snapshot</h3>
+        <div class="grid-3">
+          <div class="card small">
+            <strong>Module 1</strong>
+            <div>Dispatch Fundamentals — roles, terminology, and legal basics</div>
+          </div>
+          <div class="card small">
+            <strong>Module 2</strong>
+            <div>Load Boards, Brokers & Rate Building</div>
+          </div>
+          <div class="card small">
+            <strong>Module 3</strong>
+            <div>Carrier Compliance, ELDs & Safety</div>
+          </div>
+        </div>
 
-    </div>
+      </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const ctx = document.getElementById('salaryChart').getContext('2d');
-            const salaryChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Average', 'Experienced', 'Independent/Freelance'],
-                    datasets: [{
-                        label: 'Annual Earning Potential',
-                        data: [44000, 60000, 75000],
-                        backgroundColor: [
-                            '#FFD166', // Yellow
-                            '#06D6A0', // Green
-                            '#118AB2', // Blue
-                        ],
-                        borderColor: [
-                            '#FFD166',
-                            '#06D6A0',
-                            '#118AB2',
-                        ],
-                        borderWidth: 1,
-                        borderRadius: 4,
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value, index, values) {
-                                    return '$' + value / 1000 + 'k';
-                                },
-                                font: {
-                                    family: "'Poppins', sans-serif",
-                                    weight: '600',
-                                }
-                            }
-                        },
-                        y: {
-                           ticks: {
-                                font: {
-                                    family: "'Poppins', sans-serif",
-                                    weight: '600',
-                                    size: 14
-                                }
-                           }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    const item = tooltipItems[0];
-                                    let label = item.chart.data.labels[item.dataIndex];
-                                    if (Array.isArray(label)) {
-                                      return label.join(' ');
-                                    } else {
-                                      return label;
-                                    }
-                                },
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.x !== null) {
-                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(context.parsed.x);
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+      <aside class="card">
+        <svg class="svg-ill" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#0b6efd" />
+              <stop offset="1" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="#fbfdff" />
+          <!-- Simple dispatch workflow illustration -->
+          <g transform="translate(40,40)">
+            <rect x="0" y="0" width="200" height="70" rx="10" fill="url(#g1)" opacity="0.95" />
+            <text x="100" y="40" font-size="14" text-anchor="middle" fill="white">New Load Lead</text>
+
+            <path d="M220 35 L300 35" stroke="#111827" stroke-width="2" stroke-linecap="round" />
+            <rect x="300" y="0" width="200" height="70" rx="10" fill="#fff" stroke="#e6eefc" />
+            <text x="400" y="26" font-size="13" text-anchor="middle" fill="#0f1724">Rate & Route</text>
+            <text x="400" y="44" font-size="12" text-anchor="middle" fill="#475569">(Pricing, ETA)</text>
+
+            <path d="M500 35 L580 35" stroke="#111827" stroke-width="2" stroke-linecap="round" />
+            <rect x="580" y="0" width="200" height="70" rx="10" fill="#fff" stroke="#e6eefc" />
+            <text x="680" y="26" font-size="13" text-anchor="middle" fill="#0f1724">Book Carrier</text>
+            <text x="680" y="44" font-size="12" text-anchor="middle" fill="#475569">(Confirm, Paperwork)</text>
+
+            <!-- arrows down -->
+            <path d="M110 85 L110 140" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+            <path d="M400 85 L400 140" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+            <rect x="280" y="140" width="240" height="70" rx="10" fill="#fff" stroke="#e6eefc" />
+            <text x="400" y="172" font-size="13" text-anchor="middle" fill="#0f1724">In-Transit Management</text>
+            <text x="400" y="190" font-size="12" text-anchor="middle" fill="#475569">Tracking, updates, issues</text>
+
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+              </marker>
+            </defs>
+          </g>
+        </svg>
+
+        <div style="margin-top:12px">
+          <strong>Illustration:</strong>
+          <div class="small">High-level dispatch workflow: lead → rate + route → book → in-transit management → settlement.</div>
+        </div>
+
+      </aside>
+    </section>
+
+    <section id="overview" style="margin-top:24px">
+      <div class="card">
+        <h2>Course Overview</h2>
+        <p class="small">This course balances foundational knowledge with practical, repeatable workflows. It teaches you the terminology & law you'll need to operate (US DOT, MC, FMCSA basics), then moves quickly into real dispatch activities: finding freight, building rates, negotiating, using TMS & load boards, compliance checks, creating paperwork, and handling exceptions.</p>
+
+        <details>
+          <summary>What you will learn (detailed)</summary>
+          <ul>
+            <li>Industry roles: carriers, brokers, shippers, 3PLs, freight brokers, factoring companies</li>
+            <li>How to read rate confirmations, bills of lading, carrier packets</li>
+            <li>Using load boards effectively & intel-sourcing (sourcing lanes, deadhead calculation)</li>
+            <li>Calculating line-haul, fuel surcharge, accessorials, detention</li>
+            <li>Communication scripts for driver/carrier/broker interactions with templates</li>
+            <li>Complying with FMCSA rules, ELD usage, HOS calculations</li>
+            <li>Setting up a dispatch business: client onboarding, contracts, pricing models, bookkeeping & KPIs</li>
+            <li>Handling claims, detention disputes, freight exceptions</li>
+            <li>Tools & tech: freight matching platforms, simple TMS, ELD portals, Google Sheets templates & automation ideas</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section id="syllabus" style="margin-top:18px">
+      <div class="card">
+        <h2>Syllabus — Modules & Lessons</h2>
+
+        <details open>
+          <summary>Module 1 — Dispatch Fundamentals (4 lessons)</summary>
+          <ol>
+            <li>Welcome & industry overview — terms & parties</li>
+            <li>Paperwork 101 — BOLs, rate confirmations, carrier packets</li>
+            <li>Regulatory basics — FMCSA, DOT numbers, insurance & authority</li>
+            <li>Communication & documentation best practices</li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Module 2 — Load Finding & Rate Building (6 lessons)</summary>
+          <ol>
+            <li>Load boards overview — what to use & when</li>
+            <li>Lane research — how to determine realistic rates</li>
+            <li>Calculating deadhead and fuel impact</li>
+            <li>Building a rate sheet & margin model</li>
+            <li>Negotiation templates and price anchoring</li>
+            <li>Exercise: price 5 sample loads</li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Module 3 — Carrier Compliance & Safety (5 lessons)</summary>
+          <ol>
+            <li>Reading carrier safety profiles (CSA scores)</li>
+            <li>ELD basics & Hours-of-Service (HOS) rules</li>
+            <li>Insurance, authority verification, and MCS-150</li>
+            <li>Driver qualification files (DQ files)</li>
+            <li>Practical compliance checklist for onboarding a carrier</li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Module 4 — Tools, Templates & Tech (5 lessons)</summary>
+          <ol>
+            <li>TMS basics & free/paid options</li>
+            <li>Google Sheets templates for quick quoting & routing</li>
+            <li>Using mapping & ETA tools to plan trips</li>
+            <li>Email & call templates (onboarding, booking, follow-ups)</li>
+            <li>Automation ideas with Zapier/Make (optional)</li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Module 5 — Business of Dispatching (4 lessons)</summary>
+          <ol>
+            <li>Pricing models: percentage vs flat-fee</li>
+            <li>Contracts & service agreements</li>
+            <li>Client acquisition & retention strategies</li>
+            <li>KPIs, bookkeeping & scaling your team</li>
+          </ol>
+        </details>
+
+        <details>
+          <summary>Module 6 — Capstone & Troubleshooting (3 lessons)</summary>
+          <ol>
+            <li>Capstone project: full dispatch from lead to settlement</li>
+            <li>Common issues — claims, delays, detention resolution</li>
+            <li>Final exam & certificate</li>
+          </ol>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="resources" style="margin-top:18px">
+      <div class="card">
+        <h2>Resources & Templates</h2>
+        <p class="small">Everything in the course comes with downloadable templates and examples you can copy and use immediately.</p>
+
+        <details>
+          <summary>Included templates</summary>
+          <ul>
+            <li>Rate calculator (Google Sheets)</li>
+            <li>Carrier onboarding packet checklist (PDF)</li>
+            <li>Booking confirmation & rate confirmation email templates</li>
+            <li>Driver communication scripts</li>
+            <li>Simple TMS CSV export template</li>
+            <li>Capstone grading rubric</li>
+          </ul>
+        </details>
+
+        <h3 style="margin-top:12px">Sample: Rate Confirmation (HTML snippet)</h3>
+        <pre>&lt;strong&gt;Rate Confirmation&lt;/strong&gt;&lt;br/&gt;
+Shipment: 1x32,000 lb Pulpboard / 53' van
+Origin: Los Angeles, CA
+Destination: Phoenix, AZ
+Pickup: 2025-09-15 | Delivery: 2025-09-16
+Rate: $1,600 Linehaul
+Fuel Surcharge: $150
+Accessorials: $75 (Chassis fee)
+Total Pay: $1,825
+Dispatcher Fee: 15% ($273.75)
+Carrier Pay: $1,551.25
+</pre>
+
+      </div>
+    </section>
+
+    <section id="instructor" style="margin-top:18px">
+      <div class="card">
+        <h2>Instructor & Support</h2>
+        <div style="display:flex;gap:14px;align-items:center">
+          <div style="width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0b6efd);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">JD</div>
+          <div>
+            <div style="font-weight:700">Jordan Davis — Lead Instructor</div>
+            <div class="small">20+ years in freight brokerage, carrier operations & dispatch management. Former operations manager for a national carrier; helped scale multiple small dispatch teams into profitable agencies.</div>
+          </div>
+        </div>
+
+        <details style="margin-top:12px">
+          <summary>Office hours & support</summary>
+          <ul>
+            <li>Weekly live Q&A (recorded)</li>
+            <li>Private forum for students</li>
+            <li>Graded capstone feedback</li>
+          </ul>
+        </details>
+
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <div class="card">
+        <h2>Assessment & Certificate</h2>
+        <p class="small">The course includes short quizzes after modules and a final capstone project. Completing the capstone and passing the final exam (70%+) earns a course completion certificate you can share with carriers and clients.</p>
+
+        <details>
+          <summary>Sample quiz question</summary>
+          <p class="small"><strong>Q:</strong> If a carrier asks for $0.95/mile on a 800-mile trip with a $150 fuel surcharge and you charge the shipper $0.95 + 15% markup on the linehaul only, how much is the carrier pay and dispatcher fee?</p>
+          <p class="small"><em>Answer walkthrough included in the course.</em></p>
+        </details>
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <div class="card">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>Do I need prior trucking experience?</summary>
+          <p class="small">No — the course starts with fundamentals and builds practical skills. Prior industry experience helps but is not required.</p>
+        </details>
+        <details>
+          <summary>Will this help me start a business?</summary>
+          <p class="small">Yes — Module 5 covers pricing, contracts, taxes, and client acquisition — plus templates to get started.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small">© 2025 Professional Truck Dispatching Course • Built for GitHub Pages. Want this page customized, or want separate pages per headline? Reply with the next headline and I will create an HTML page for it.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small JS to make details elements close others when opened (accordion-like behavior)
+    document.querySelectorAll('section details').forEach(section => {
+      section.addEventListener('toggle', (e) => {
+        if (!section.open) return;
+        // close other details in the same section
+        const others = Array.from(section.parentNode.querySelectorAll('details')).filter(d=>d!==section);
+        others.forEach(o=>o.open=false);
+      });
+    });
+  </script>
 </body>
 </html>
