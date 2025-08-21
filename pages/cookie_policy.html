@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - Bramwell Grey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application is structured with a fixed sidebar for navigation and a dynamic main content area. This design was chosen to deconstruct the dense, legalistic policy into manageable, thematic sections. It empowers users to instantly access specific information (e.g., "What Are Cookies") without scrolling through irrelevant text. This non-linear, interactive approach significantly enhances usability and comprehension compared to a static document, making a complex legal text more approachable for all users. On mobile, the sidebar collapses into a top navigation button for a clean, responsive layout. -->
+    <!-- Visualization & Content Choices: Report Info: Cookie Policy sections. -> Goal: Inform, Empower, Clarify. -> Viz/Presentation Method: The core is well-structured text. A key element is a table to clearly and visually organize the specific cookies used. The "Your Choices & Cookie Controls" section uses a list with clear headings to empower users with actionable information on managing their cookie preferences. Icons are used in the navigation menu to provide a visual cue for each section. There is no numerical data, so no charts are used. -> Interaction: Users click sidebar links to dynamically load content into the main view. This is managed by vanilla JS that toggles section visibility and updates the URL hash for deep linking. -> Justification: This combination of interactive navigation, a clear data table, and an actionable list makes the technical and legal information less intimidating and easier to understand, improving user control and trust. -> Library/Method: Vanilla JS, Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #FEF3C7;
+            color: #B45309;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Cookie Policy</h1>
+                <button id="mobile-nav-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
+                    <span class="text-2xl">☰</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-nav" class="md:hidden bg-stone-100 py-2 hidden">
+            <nav class="flex flex-col space-y-1 mx-4">
+                <a href="#introduction" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Introduction
+                </a>
+                <a href="#what-are-cookies" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    What Are Cookies?
+                </a>
+                <a href="#how-we-use-cookies" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    How & Why We Use Cookies
+                </a>
+                <a href="#your-choices" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Your Choices & Controls
+                </a>
+                <a href="#contact" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Contact Us
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0 hidden md:block">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">Policy Sections</h2>
+                    <nav id="policy-nav" class="space-y-1">
+                        <a href="#introduction" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📝</span> Introduction
+                        </a>
+                        <a href="#what-are-cookies" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🍪</span> What Are Cookies?
+                        </a>
+                        <a href="#how-we-use-cookies" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📊</span> How & Why We Use Cookies
+                        </a>
+                        <a href="#your-choices" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">⚙️</span> Your Choices & Controls
+                        </a>
+                        <a href="#contact" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">✉️</span> Contact Us
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="policy-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="introduction" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h3>
+                        <p>This policy explains how we use cookies and other similar tracking technologies on our site. It's designed to inform you about the types of cookies we use and your rights to control them. By continuing to use our site, you consent to our use of cookies as described here.</p>
+                        <p>This Cookie Policy ("Policy") explains how Knight Gold Freight ("Company," "we," "us," or "our"), operating through our website Bramwell Grey at **https://bramwellgrey.blogspot.com/** (the "Site"), uses cookies and similar tracking technologies. By continuing to browse or use our Site, you acknowledge that you have been informed about the use of cookies as described in this Policy and our Privacy Policy. You consent to the use of cookies if you agree to the settings in the cookie consent banner or continue to use the site without changing your settings.</p>
+                    </section>
+                    
+                    <section id="what-are-cookies" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">2. What Are Cookies?</h3>
+                        <p>This section provides a simple explanation of what cookies are and the other similar technologies we might use to track your usage on our site. Understanding these terms will help you better understand the rest of the policy.</p>
+                        <ul>
+                            <li><strong>Cookies:</strong> Small text files stored on your device that remember your preferences.</li>
+                            <li><strong>Similar Technologies:</strong> Includes web beacons (for monitoring user behavior), log files (for tracking actions), and local storage (for storing user data on your browser).</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="how-we-use-cookies" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">3. How & Why We Use Cookies</h3>
+                        <p>We use cookies for four main purposes. These categories help you understand why each type of cookie is necessary and how they improve your experience on our site, from basic functionality to site analytics and advertising.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-amber-300 text-sm">
+                            <p class="font-semibold text-amber-800">CATEGORIES OF COOKIES:</p>
+                            <ol class="list-decimal pl-5 mt-2">
+                                <li><strong>Essential / Strictly Necessary:</strong> Required for the site to function properly.</li>
+                                <li><strong>Performance / Analytics:</strong> Help us measure and improve site performance.</li>
+                                <li><strong>Functionality / Preference:</strong> Remember your choices for a more personalized experience.</li>
+                                <li><strong>Targeting / Advertising:</strong> Used to show you relevant advertisements on other sites.</li>
+                            </ol>
+                        </div>
+                        <h4 class="mt-6">Specific Cookies We Use</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse my-4">
+                                <thead>
+                                    <tr class="bg-gray-100 text-gray-600 uppercase text-xs">
+                                        <th class="py-2 px-4 font-semibold border-b">Cookie Name</th>
+                                        <th class="py-2 px-4 font-semibold border-b">Type</th>
+                                        <th class="py-2 px-4 font-semibold border-b">Provider</th>
+                                        <th class="py-2 px-4 font-semibold border-b">Purpose</th>
+                                        <th class="py-2 px-4 font-semibold border-b">Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4">NID</td>
+                                        <td class="py-2 px-4">Essential / Preference</td>
+                                        <td class="py-2 px-4">Google</td>
+                                        <td class="py-2 px-4">Stores user preferences for Google services.</td>
+                                        <td class="py-2 px-4">6 months</td>
+                                    </tr>
+                                    <tr class="border-b bg-gray-50">
+                                        <td class="py-2 px-4">CONSENT</td>
+                                        <td class="py-2 px-4">Essential</td>
+                                        <td class="py-2 px-4">Google</td>
+                                        <td class="py-2 px-4">Tracks cookie banner consent.</td>
+                                        <td class="py-2 px-4">2 years</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4">_ga</td>
+                                        <td class="py-2 px-4">Analytics</td>
+                                        <td class="py-2 px-4">Google Analytics</td>
+                                        <td class="py-2 px-4">Distinguishes unique users.</td>
+                                        <td class="py-2 px-4">2 years</td>
+                                    </tr>
+                                    <tr class="border-b bg-gray-50">
+                                        <td class="py-2 px-4">_gid</td>
+                                        <td class="py-2 px-4">Analytics</td>
+                                        <td class="py-2 px-4">Google Analytics</td>
+                                        <td class="py-2 px-4">Distinguishes unique users.</td>
+                                        <td class="py-2 px-4">24 hours</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    
+                    <section id="your-choices" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">5. Your Choices & Cookie Controls</h3>
+                        <p>You have the right to control how cookies are used on your device. This section provides actionable steps you can take to manage your cookie preferences, from using our on-site banner to adjusting your browser settings and opting out of third-party tracking directly.</p>
+                        <ul>
+                            <li><strong>Cookie Consent Banner:</strong> The first time you visit, you can accept, reject, or customize your cookie preferences.</li>
+                            <li><strong>Browser Settings:</strong> You can block or delete cookies directly through your browser's settings. Be aware this may affect site functionality.</li>
+                            <li><strong>Third-Party Opt-Outs:</strong> You can opt-out of targeted advertising from services like Google and others directly through their opt-out pages.</li>
+                        </ul>
+                    </section>
+
+                    <section id="contact" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">7. Contact Us</h3>
+                        <p>If you have any questions or concerns about this policy, please do not hesitate to reach out. We are here to help clarify any of the terms or our practices regarding cookie usage.</p>
+                        <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-sm not-prose">
+                            <p class="font-semibold">Email for All Inquiries:</p>
+                            <a href="mailto:bramwellgrey.kgf@gmail.com" class="text-amber-700 hover:underline font-medium">bramwellgrey.kgf@gmail.com</a>
+                        </div>
+                        <h4 class="mt-6">Other Important Sections</h4>
+                        <ul>
+                            <li><strong>Changes to Policy:</strong> We may update this policy to reflect changes in technology or law.</li>
+                        </ul>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopNavLinks = document.querySelectorAll('#policy-nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+            const navToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const contentSections = document.querySelectorAll('#policy-content .content-section');
+
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'introduction';
+                let sectionToShow = document.getElementById(targetId);
+                
+                if (!sectionToShow) {
+                    sectionToShow = document.getElementById('introduction');
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                desktopNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            desktopNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                    mobileNav.classList.add('hidden');
+                });
+            });
+
+            navToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#introduction');
+        });
+    </script>
+
+</body>
+</html>
