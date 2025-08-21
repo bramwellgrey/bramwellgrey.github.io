@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund & Cancellation Policy - Bramwell Grey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application is structured with a fixed sidebar for navigation and a dynamic main content area. This design was chosen to deconstruct the dense, legalistic policy into manageable, thematic sections. It empowers users to instantly access specific information (e.g., "Cancellation by the Shipper") without scrolling through irrelevant text. This non-linear, interactive approach significantly enhances usability and comprehension compared to a static document, making a complex legal text more approachable for all users. On mobile, the sidebar collapses into a top navigation button for a clean, responsive layout. -->
+    <!-- Visualization & Content Choices: Report Info: Refund & Cancellation Policy sections. -> Goal: Inform, Emphasize, Clarify. -> Viz/Presentation Method: The core is well-structured text. Critical sections and disclaimers are highlighted using distinct card-like divs with a bold, color-coded border to visually separate them from the main text and emphasize their importance. Icons are used in the navigation menu to provide a visual cue for each section. There is no numerical data, so no charts are used. -> Interaction: Users click sidebar links to dynamically load content into the main view. This is managed by vanilla JS that toggles section visibility and updates the URL hash for deep linking. -> Justification: This combination of interactive navigation and targeted visual emphasis makes the policy less intimidating and easier to process, ensuring users understand key financial and liability terms. -> Library/Method: Vanilla JS, Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #FEF3C7;
+            color: #B45309;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Refund & Cancellation Policy</h1>
+                <button id="mobile-nav-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
+                    <span class="text-2xl">☰</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-nav" class="md:hidden bg-stone-100 py-2 hidden">
+            <nav class="flex flex-col space-y-1 mx-4">
+                <a href="#introduction" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Introduction
+                </a>
+                <a href="#services-nature" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Nature of Services
+                </a>
+                <a href="#cancellation-policy" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Cancellation Policy
+                </a>
+                <a href="#refund-policy" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Refund Policy
+                </a>
+                <a href="#dispute-resolution" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Dispute Resolution
+                </a>
+                <a href="#contact" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Contact Information
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0 hidden md:block">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">Policy Sections</h2>
+                    <nav id="policy-nav" class="space-y-1">
+                        <a href="#introduction" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📝</span> Introduction
+                        </a>
+                        <a href="#services-nature" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">⚖️</span> Nature of Services
+                        </a>
+                        <a href="#cancellation-policy" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">❌</span> Cancellation Policy
+                        </a>
+                        <a href="#refund-policy" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">💰</span> Refund Policy
+                        </a>
+                        <a href="#dispute-resolution" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🗣️</span> Dispute Resolution
+                        </a>
+                        <a href="#contact" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">✉️</span> Contact Information
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="policy-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="introduction" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h3>
+                        <p>This policy is a key part of our Terms and Conditions. By using our services, you agree to its terms regarding the cancellation of shipments and the conditions for refunds. It's designed to be transparent about what to expect.</p>
+                        <p>This Refund & Cancellation Policy ("Policy") outlines the terms and conditions governing the cancellation of services and the issuance of any refunds by Knight Gold Freight ("Company," "we," "us," or "our"), operating through our website Bramwell Grey at https://bramwellgrey.blogspot.com/. This Policy is an integral part of our broader Terms and Conditions of Service. By engaging our dispatch and freight brokerage services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Policy.</p>
+                    </section>
+                    
+                    <section id="services-nature" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">2. Nature of Our Services & Fees</h3>
+                        <p>This section explains our role as a broker. It's important to understand that our fees are for intellectual and logistical services, which are performed in real-time. This is why our services are generally non-refundable once the work has begun.</p>
+                        <ul>
+                            <li><strong>Brokerage Role:</strong> We are a freight broker, facilitating transactions between Shippers and Carriers.</li>
+                            <li><strong>Types of Fees:</strong> Our fees are a margin on the freight rate or a flat-rate dispatch fee.</li>
+                            <li><strong>Non-Refundable Services:</strong> Our work begins immediately upon a load being tendered. The time and resources invested in sourcing a Carrier and coordinating logistics are our primary service, which makes them non-refundable.</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="cancellation-policy" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">3. Cancellation Policy by Party</h3>
+                        <p>This is a critical section that details the consequences of canceling a shipment. The policy is different depending on who is canceling and when the cancellation occurs relative to the pickup.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-amber-300 text-sm">
+                            <p class="font-semibold text-amber-800">A. Cancellation by the Shipper:</p>
+                            <ul>
+                                <li><strong>Before Carrier Assignment:</strong> No fee.</li>
+                                <li><strong>After Carrier Assignment but Before Pickup:</strong> A cancellation fee will be applied to compensate the Carrier and us for lost time and resources.</li>
+                                <li><strong>After Carrier Arrival (No-Show):</strong> The Shipper will be responsible for 100% of the freight charge, as this is a "truck ordered, not used" (TONU) scenario.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-amber-300 text-sm">
+                            <p class="font-semibold text-amber-800">B. Cancellation by the Carrier:</p>
+                            <p>Cancellation by a Carrier is a serious breach of agreement. A Carrier who cancels may be barred from our network and could be held financially liable for the additional costs we incur to find a replacement to serve the Shipper.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="refund-policy" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">4. Refund Policy</h3>
+                        <p>This section clarifies when and if a refund may be issued. As our fees are earned upon the successful performance of our brokerage services, they are generally non-refundable.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-rose-400 text-sm">
+                            <p class="font-semibold text-rose-800">IMPORTANT - NON-REFUNDABLE FEES:</p>
+                            <p>Brokerage and dispatch fees are generally **NON-REFUNDABLE**. For Shippers, our fee is earned once a Carrier has been assigned. For Carriers, dispatch fees are earned upon the successful matching of a load.</p>
+                        </div>
+                        <p>The only exception is if a Shipper is overcharged due to a proven billing error on our part. In that case, we will issue a prompt refund for the overcharged amount.</p>
+                    </section>
+                    
+                    <section id="dispute-resolution" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">5. Dispute Resolution for Cancellation Fees & Refunds</h3>
+                        <p>This section provides a clear process for you to follow if you wish to dispute a cancellation fee or a refund decision. All disputes must be submitted in writing within 7 days of the invoice date.</p>
+                        <p>We will review all documentation and provide a written response within 14 business days. Our final decision will be based on the terms of this Policy and the specific circumstances of the shipment.</p>
+                    </section>
+
+                    <section id="contact" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">8. Contact Information</h3>
+                        <p>This section provides a clear way for you to contact us for all cancellation requests, questions, or disputes. Your use of our services signifies your consent to the terms of this policy.</p>
+                        <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-sm not-prose">
+                            <p class="font-semibold">Email for All Inquiries:</p>
+                            <a href="mailto:bramwellgrey.kgf@gmail.com" class="text-amber-700 hover:underline font-medium">bramwellgrey.kgf@gmail.com</a>
+                        </div>
+                        <h4 class="mt-6">Other Important Sections</h4>
+                        <ul>
+                            <li><strong>Force Majeure:</strong> Details how unforeseen events (e.g., natural disasters, pandemics) may affect our obligations and fees.</li>
+                            <li><strong>Policy Modifications:</strong> We reserve the right to update this policy at any time. Your continued use of our services indicates acceptance of the new terms.</li>
+                        </ul>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopNavLinks = document.querySelectorAll('#policy-nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+            const navToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const contentSections = document.querySelectorAll('#policy-content .content-section');
+
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'introduction';
+                let sectionToShow = document.getElementById(targetId);
+                
+                if (!sectionToShow) {
+                    sectionToShow = document.getElementById('introduction');
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                desktopNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            desktopNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                    mobileNav.classList.add('hidden');
+                });
+            });
+
+            navToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#introduction');
+        });
+    </script>
+
+</body>
+</html>
