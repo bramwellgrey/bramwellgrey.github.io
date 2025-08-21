@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Bramwell Grey (Knight Gold Freight)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application is structured with a fixed sidebar for navigation and a dynamic main content area. This design was chosen to deconstruct the dense, legalistic Terms and Conditions into manageable, thematic sections. It empowers users to instantly access specific information (e.g., "Liability and Limitations") without scrolling through irrelevant text. This non-linear, interactive approach significantly enhances usability and comprehension compared to a static document, making a complex legal text more approachable for all users. On mobile, the sidebar collapses into a top navigation button for a clean, responsive layout. -->
+    <!-- Visualization & Content Choices: Report Info: Terms & Conditions sections. -> Goal: Inform, Organize, Clarify. -> Viz/Presentation Method: The core is well-structured text. Critical sections and disclaimers are highlighted using distinct card-like divs with a bold border to visually separate them from the main text and emphasize their importance. Icons are used in the navigation menu to provide a visual cue for each section. -> Interaction: Users click sidebar links to dynamically load content into the main view. This is managed by vanilla JS that toggles section visibility and updates the URL hash for deep linking. -> Justification: This combination of interactive navigation and targeted visual emphasis makes the legal information less intimidating and easier to process, preventing users from missing key disclaimers and responsibilities. -> Library/Method: Vanilla JS, Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #FEF3C7;
+            color: #B45309;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Terms & Conditions</h1>
+                <button id="mobile-nav-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
+                    <span class="text-2xl">☰</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-nav" class="md:hidden bg-stone-100 py-2 hidden">
+            <nav class="flex flex-col space-y-1 mx-4">
+                <a href="#acceptance" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Acceptance of Terms
+                </a>
+                <a href="#definitions" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Key Definitions
+                </a>
+                <a href="#services" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Services Description
+                </a>
+                <a href="#quotes" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Quotes & Rates
+                </a>
+                <a href="#liability" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Liability & Limitations
+                </a>
+                <a href="#payment" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Payment Terms
+                </a>
+                <a href="#governing-law" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Governing Law
+                </a>
+                <a href="#contact" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Contact Information
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0 hidden md:block">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">Agreement Sections</h2>
+                    <nav id="policy-nav" class="space-y-1">
+                        <a href="#acceptance" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">✅</span> Acceptance of Terms
+                        </a>
+                        <a href="#definitions" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📄</span> Key Definitions
+                        </a>
+                        <a href="#services" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🚚</span> Services Description
+                        </a>
+                        <a href="#quotes" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">💰</span> Quotes & Rates
+                        </a>
+                        <a href="#liability" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🛡️</span> Liability & Limitations
+                        </a>
+                        <a href="#payment" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">💳</span> Payment Terms
+                        </a>
+                        <a href="#governing-law" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">⚖️</span> Governing Law
+                        </a>
+                        <a href="#contact" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">✉️</span> Contact Information
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="policy-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="acceptance" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h3>
+                        <p>This section outlines your agreement to these Terms and Conditions. By using our website or services, you acknowledge that you have read, understood, and accept all the terms set forth in this document. It is a legal agreement between you and Knight Gold Freight.</p>
+                        <p>Welcome to Bramwell Grey (the "Site"), the official online presence for Knight Gold Freight ("Company," "we," "us," or "our"). These Terms and Conditions of Use ("Terms") govern your access to and use of our website located at https://bramwellgrey.blogspot.com/ (the "Site") and all related content, services, and dispatch/freight brokerage services (collectively, the "Services").</p>
+                        <p>By accessing, browsing, or using the Site or our Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy, which is incorporated herein by reference. If you do not agree to all of these Terms, you are prohibited from using the Site and Services.</p>
+                    </section>
+
+                    <section id="definitions" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">2. Key Definitions</h3>
+                        <p>Understanding these key terms will help you better understand the rest of this agreement. This section defines the main parties and concepts mentioned throughout the document.</p>
+                        <ul>
+                            <li><strong>"Carrier"</strong> means the motor carrier, truck driver, or transportation company that provides the physical transportation of freight.</li>
+                            <li><strong>"Shipper"</strong> means the person or entity that tenders a shipment to the Company for transportation.</li>
+                            <li><strong>"Shipment"</strong> means the cargo, goods, or freight tendered for transportation.</li>
+                            <li><strong>"You" / "Your"</strong> means any user of the Site or customer of our Services, whether a Shipper, Carrier, or visitor.</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="services" class="content-section prose max-w-none">
+                        <h3 class="2xl font-bold text-gray-900 mb-4">3. Services Description</h3>
+                        <p>This section clarifies the role of Knight Gold Freight. It is important to note that we are a broker and not a physical carrier, meaning we do not own the trucks or handle the freight directly. Our primary function is to connect you with independent Carriers and manage the logistics of your shipment.</p>
+                        <p>Knight Gold Freight acts as a freight dispatcher and broker. We are not a motor carrier. Our Services include, but are not limited to: connecting Shippers with Carriers; negotiating freight rates on behalf of Shippers and Carriers; arranging for the transportation of freight by independent, third-party Carriers; providing logistical support, tracking, and communication for shipments; and facilitating the billing and payment process between Shippers and Carriers.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-amber-300 text-sm">
+                            <p class="font-semibold text-amber-800">IMPORTANT NOTE:</p>
+                            <p>We do not own, lease, or operate any trucks or transportation equipment. The actual transportation of shipments is performed by Carriers who are separate, independent entities and are solely responsible for the safe and lawful operation of their vehicles and the physical handling of the freight.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="quotes" class="content-section prose max-w-none">
+                        <h3 class="2xl font-bold text-gray-900 mb-4">5. Quotes, Bookings, and Rates</h3>
+                        <p>This section explains how our quoting and booking process works. It highlights that quotes are estimates and that final rates can change based on a number of factors, including additional charges that may be incurred during transport.</p>
+                        <ul>
+                            <li><strong>Quotes:</strong> All quotes are estimates and are valid for a limited time. They are subject to change until a booking is formally confirmed.</li>
+                            <li><strong>Booking Confirmation:</strong> A shipment is not considered booked until you receive a written confirmation from us.</li>
+                            <li><strong>Fuel Surcharges and Accessorials:</strong> Quotes may not include additional charges like fuel surcharges, tolls, or lumper services, which will be billed separately.</li>
+                            <li><strong>Rate Changes:</strong> Rates for confirmed bookings may change due to modifications you requested or unforeseen events.</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="liability" class="content-section prose max-w-none">
+                        <h3 class="2xl font-bold text-gray-900 mb-4">7. Liability and Limitations</h3>
+                        <p>This is a critical section that clarifies our limited liability as a broker. We are not responsible for damages, delays, or theft that occur during the physical transportation of the freight, which is the sole responsibility of the Carrier. We highly recommend you purchase separate cargo insurance.</p>
+                        <p>As a broker, Knight Gold Freight's role is to arrange for transportation. We are not liable for any loss, damage, delay, theft, or injury to persons or property that occurs during the physical transportation of the Shipment, which is the sole responsibility of the Carrier.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-rose-400 text-sm">
+                            <p class="font-semibold text-rose-800">LIMITATION OF OUR LIABILITY:</p>
+                            <p>To the fullest extent permitted by law, Knight Gold Freight's total liability to you for any claims arising from our Services shall be limited to the total brokerage fees we earned on that specific shipment. We are not liable for any consequential, indirect, incidental, special, or punitive damages, including lost profits.</p>
+                        </div>
+                        <p>Any claim for loss or damage must be reported to Knight Gold Freight in writing within a strict timeframe and a formal claim must be filed directly with the Carrier. We will assist you in filing a claim but are not responsible for its adjudication or payment.</p>
+                    </section>
+                    
+                    <section id="payment" class="content-section prose max-w-none">
+                        <h3 class="2xl font-bold text-gray-900 mb-4">8. Payment Terms</h3>
+                        <p>This section details our invoicing, billing, and payment policies. It includes information about due dates, how to handle billing disputes, and the consequences of late payments.</p>
+                        <ul>
+                            <li><strong>Invoicing:</strong> Invoices for our brokerage services and any accessorial fees are due and payable within a specified net term from the date of invoice.</li>
+                            <li><strong>Disputes:</strong> Any billing disputes must be submitted in writing to bramwellgrey.kgf@gmail.com within 15 days of the invoice date.</li>
+                            <li><strong>Late Payments:</strong> Late payments may be subject to interest charges. We reserve the right to withhold services until all past due amounts are paid in full.</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="governing-law" class="content-section prose max-w-none">
+                        <h3 class="2xl font-bold text-gray-900 mb-4">15. Governing Law and Dispute Resolution</h3>
+                        <p>This is a crucial legal section that defines the jurisdiction and method for resolving any disputes that may arise. It specifies that any disagreements will be handled through confidential, binding arbitration rather than in court.</p>
+                        <p>These Terms shall be governed by and construed in accordance with the laws of the State of [Insert Your State, e.g., Texas], without regard to its conflict of law provisions.</p>
+                        <p>Any dispute arising from these Terms or your use of the Services shall be resolved through confidential, binding arbitration to be held in [Insert Your City, State], rather than in court. You agree to waive your right to a jury trial and to participate in a class-action lawsuit.</p>
+                    </section>
+
+                    <section id="contact" class="content-section prose max-w-none">
+                        <h3 class="2xl font-bold text-gray-900 mb-4">17. Contact Information</h3>
+                        <p>If you have any questions or concerns about these Terms and Conditions, please reach out to us directly via our official email address provided in this section. We are here to help clarify any aspect of this agreement.</p>
+                        <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-sm not-prose">
+                            <p class="font-semibold">Email for All Inquiries:</p>
+                            <a href="mailto:bramwellgrey.kgf@gmail.com" class="text-amber-700 hover:underline font-medium">bramwellgrey.kgf@gmail.com</a>
+                        </div>
+                        <h4 class="mt-6">Other Important Sections</h4>
+                        <ul>
+                            <li><strong>User Accounts:</strong> Details on registration and your responsibilities for maintaining account security.</li>
+                            <li><strong>Intellectual Property:</strong> A reminder that our site and branding are our exclusive property.</li>
+                            <li><strong>User Conduct:</strong> An outline of prohibited activities on our site.</li>
+                            <li><strong>Disclaimer of Warranties:</strong> A statement that our services are provided "as is."</li>
+                            <li><strong>Changes to Terms:</strong> Notice that we may update these Terms at any time.</li>
+                        </ul>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopNavLinks = document.querySelectorAll('#policy-nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+            const navToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const contentSections = document.querySelectorAll('#policy-content .content-section');
+
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'acceptance';
+                let sectionToShow = document.getElementById(targetId);
+                
+                if (!sectionToShow) {
+                    sectionToShow = document.getElementById('acceptance');
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                desktopNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            desktopNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                    mobileNav.classList.add('hidden');
+                });
+            });
+
+            navToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#acceptance');
+        });
+    </script>
+
+</body>
+</html>
