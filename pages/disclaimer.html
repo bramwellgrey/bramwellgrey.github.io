@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - Bramwell Grey (Knight Gold Freight)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application is structured with a fixed sidebar for navigation and a dynamic main content area. This design was chosen to break down the legalistic disclaimer into manageable, thematic sections. It empowers users to instantly access specific information (e.g., "Broker Status & Liability") without scrolling through irrelevant text. This non-linear, interactive approach significantly enhances usability and comprehension compared to a static document, making a complex legal text more approachable for all users. On mobile, the sidebar collapses into a top navigation button for a clean, responsive layout. -->
+    <!-- Visualization & Content Choices: Report Info: Disclaimer sections. -> Goal: Inform, Emphasize, Clarify. -> Viz/Presentation Method: The core is well-structured text. Critical sections like "Broker Status & Liability" and "No Warranties" are highlighted using distinct card-like divs with a bold, color-coded border to visually separate them and emphasize their importance. Icons are used in the navigation menu to provide a visual cue for each section. There is no numerical data, so no charts are used. -> Interaction: Users click sidebar links to dynamically load content into the main view. This is managed by vanilla JS that toggles section visibility and updates the URL hash for deep linking. -> Justification: This combination of interactive navigation and targeted visual emphasis ensures users do not miss key disclaimers, thereby improving legal transparency and user understanding. -> Library/Method: Vanilla JS, Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #FEF3C7;
+            color: #B45309;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Disclaimer</h1>
+                <button id="mobile-nav-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
+                    <span class="text-2xl">☰</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-nav" class="md:hidden bg-stone-100 py-2 hidden">
+            <nav class="flex flex-col space-y-1 mx-4">
+                <a href="#introduction" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Introduction
+                </a>
+                <a href="#broker-status" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Broker Status & Liability
+                </a>
+                <a href="#no-warranties" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    No Warranties & Errors
+                </a>
+                <a href="#external-links" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    External Links
+                </a>
+                <a href="#testimonials" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Testimonials
+                </a>
+                <a href="#contact" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    Contact Us
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0 hidden md:block">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">Disclaimer Sections</h2>
+                    <nav id="policy-nav" class="space-y-1">
+                        <a href="#introduction" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📝</span> Introduction
+                        </a>
+                        <a href="#broker-status" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🛡️</span> Broker Status & Liability
+                        </a>
+                        <a href="#no-warranties" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">❌</span> No Warranties & Errors
+                        </a>
+                        <a href="#external-links" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🔗</span> External Links
+                        </a>
+                        <a href="#testimonials" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🗣️</span> Testimonials
+                        </a>
+                        <a href="#contact" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">✉️</span> Contact Us
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="policy-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="introduction" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h3>
+                        <p>This section outlines your agreement to this Disclaimer. By using our website or engaging our services, you accept and agree to all the terms provided here. It is important to understand that this document governs your use of our site and its content.</p>
+                        <p>This disclaimer ("Disclaimer") governs your use of the website Bramwell Grey, found at https://bramwellgrey.blogspot.com/ ("the Site"), which is the digital platform for Knight Gold Freight ("Company," "we," "us," or "our"). By accessing and using this Site, you accept and agree to be bound by the terms and provisions of this Disclaimer in full. If you disagree with any part of this Disclaimer, you must not use our Site or engage our services.</p>
+                    </section>
+                    
+                    <section id="broker-status" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">3. Broker Status & Liability</h3>
+                        <p>This is a critical disclosure regarding the nature of our business. It explains that Knight Gold Freight is a freight broker and not a motor carrier, which means we do not own the trucks or physically handle your freight. This section clarifies our limited liability and the responsibilities of the carriers we work with.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-amber-300 text-sm">
+                            <p class="font-semibold text-amber-800">CRITICAL DISCLOSURE:</p>
+                            <p>Knight Gold Freight operates exclusively as a freight broker and dispatcher. We are **NOT** a motor carrier. We do not own, lease, or operate any trucks, trailers, or other transportation equipment. We act as an intermediary between shippers and carriers.</p>
+                        </div>
+                        <ul>
+                            <li><strong>No Liability for Transportation:</strong> We are not liable for any loss, damage, delay, theft, or injury that occurs during the physical transportation of a shipment. The motor carrier is solely responsible for the safe and lawful handling of your freight.</li>
+                            <li><strong>Carrier Vetting Disclaimer:</strong> While we vet carriers, we cannot guarantee their performance or continuous compliance. The ultimate responsibility for selecting a carrier rests with the shipper.</li>
+                            <li><strong>Cargo Liability:</strong> We strongly advise all shippers to purchase separate cargo insurance for the full value of their goods, as a carrier's liability may be limited. We do not assume liability for cargo claims.</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="no-warranties" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">8. No Warranties & Errors</h3>
+                        <p>This section is a legal disclaimer of warranties. It states that our site and its content are provided "as is" and "as available," without any guarantees. It also clarifies that while we strive for accuracy, we are not responsible for any errors or omissions in the information provided.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-rose-400 text-sm">
+                            <p class="font-semibold text-rose-800">NO WARRANTIES:</p>
+                            <p>The Site and its content are provided on an "as is" and "as available" basis without any warranties of any kind, express or implied. Knight Gold Freight does not warrant that the Service will be uninterrupted, timely, secure, or error-free.</p>
+                        </div>
+                        <p>While we have made every attempt to ensure that the information contained on this Site has been obtained from reliable sources, Knight Gold Freight is not responsible for any errors or omissions or for the results obtained from the use of this information.</p>
+                    </section>
+                    
+                    <section id="external-links" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">4. External Links Disclaimer</h3>
+                        <p>This section clarifies our relationship with third-party websites. It states that we are not responsible for the content or practices of any external sites linked from our platform, and you access them at your own risk.</p>
+                        <p>The Site may contain links to other websites or content belonging to or originating from third parties. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability, or completeness by us. We do not warrant, endorse, or assume responsibility for the accuracy or reliability of any information offered by these third parties.</p>
+                    </section>
+                    
+                    <section id="testimonials" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">5. Testimonials and Performance Disclaimer</h3>
+                        <p>This section addresses testimonials and our past performance. It explains that while testimonials are based on real experiences, they are not a guarantee of future results. It also highlights that past performance in the volatile freight market is not an indicator of future success.</p>
+                        <p>The Site may contain testimonials from clients and descriptions of past performance. These testimonials reflect the real-life experiences and opinions of those users. However, the experiences are personal to those users and may not be representative of all users of our services. Past performance is not a guarantee, promise, or indication of future results.</p>
+                    </section>
+
+                    <section id="contact" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h3>
+                        <p>This section provides a clear way for you to contact us if you have any questions about this Disclaimer or our services. Your continued use of our website signifies your consent to these terms.</p>
+                        <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-sm not-prose">
+                            <p class="font-semibold">Email for All Inquiries:</p>
+                            <a href="mailto:bramwellgrey.kgf@gmail.com" class="text-amber-700 hover:underline font-medium">bramwellgrey.kgf@gmail.com</a>
+                        </div>
+                        <h4 class="mt-6">Additional Topics:</h4>
+                        <ul>
+                            <li><strong>No Professional Advice:</strong> The information on this site is for educational purposes only.</li>
+                            <li><strong>Fair Use:</strong> We may use copyrighted material for purposes like news reporting or education.</li>
+                            <li><strong>Views Expressed:</strong> Views on the site are those of the authors and do not necessarily reflect our official policy.</li>
+                        </ul>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopNavLinks = document.querySelectorAll('#policy-nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+            const navToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const contentSections = document.querySelectorAll('#policy-content .content-section');
+
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'introduction';
+                let sectionToShow = document.getElementById(targetId);
+                
+                if (!sectionToShow) {
+                    sectionToShow = document.getElementById('introduction');
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                desktopNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            desktopNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                    mobileNav.classList.add('hidden');
+                });
+            });
+
+            navToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#introduction');
+        });
+    </script>
+
+</body>
+</html>
