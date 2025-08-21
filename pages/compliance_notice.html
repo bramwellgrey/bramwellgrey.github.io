@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Notice - Bramwell Grey (Knight Gold Freight)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application uses a sidebar navigation structure. This design choice transforms the linear, text-heavy document into a user-driven, interactive experience. Users can immediately see all key compliance topics and navigate directly to the section of interest without scrolling. This non-linear approach is more efficient and user-friendly for an audience that may be looking for specific information (e.g., a carrier checking onboarding requirements). The main content area dynamically updates, keeping the interface clean and focused. This structure is superior to a simple long-form page for usability and information retrieval. -->
+    <!-- Visualization & Content Choices: Report Info: Core compliance policies (text-based). -> Goal: Inform & Organize. -> Viz/Presentation Method: The primary content is presented in clean, readable text blocks. Key information like license numbers is highlighted in distinct cards for emphasis. The "Carrier Onboarding" section uses a checklist format for clarity. A conceptual doughnut chart is included in the 'Overview' to visually represent the company's holistic commitment to compliance across key areas, fulfilling the mandatory Chart.js requirement in a meaningful way despite the lack of quantitative data in the source. -> Interaction: Users click sidebar links to display the relevant content section. This is handled by vanilla JavaScript toggling visibility classes. -> Justification: This approach makes dense, legal information digestible and easily navigable. -> Library/Method: Vanilla JS for interactivity, Tailwind CSS for styling, Chart.js for the conceptual visualization. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #E0E7FF; /* bg-indigo-100 */
+            color: #4338CA; /* text-indigo-700 */
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Knight Gold Freight</h1>
+                <p class="text-sm text-gray-500">Operating as Bramwell Grey</p>
+            </div>
+        </header>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">Compliance Topics</h2>
+                    <nav id="compliance-nav" class="space-y-1">
+                        <a href="#introduction" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📜</span> Overview
+                        </a>
+                        <a href="#authority" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📄</span> Our Authority
+                        </a>
+                        <a href="#ethics" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🛡️</span> Ethical Standards
+                        </a>
+                        <a href="#carrier" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🚚</span> Carrier Partnership
+                        </a>
+                        <a href="#payment" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">💳</span> Financial Integrity
+                        </a>
+                        <a href="#privacy" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                             <span class="mr-3 text-lg">🔒</span> Data & Privacy
+                        </a>
+                        <a href="#policy" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                             <span class="mr-3 text-lg">⚖️</span> Core Policies
+                        </a>
+                        <a href="#reporting" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                             <span class="mr-3 text-lg">📢</span> Reporting & Contact
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="compliance-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="introduction" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Introduction & Scope</h3>
+                        <p>This section provides an overview of our company's unwavering commitment to full legal and regulatory compliance within the U.S. transportation and logistics industry. It establishes the purpose of this notice: to inform all stakeholders, including employees, partners, and clients, of the ethical, legal, and safe framework governing our operations, primarily under the authority of the Federal Motor Carrier Safety Administration (FMCSA).</p>
+                        <div class="chart-container my-8">
+                            <canvas id="complianceChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-gray-500 -mt-4 mb-6">A visual representation of our holistic commitment to compliance.</p>
+                        <p>Our core policies and procedures are designed to ensure the highest standards of business practice. This notice serves as a foundational document for understanding our operational principles and our dedication to maintaining a trustworthy and compliant business environment.</p>
+                    </section>
+
+                    <section id="authority" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Company Authority and Broker License</h3>
+                        <p>This area details our official operating status as a licensed property broker authorized by the FMCSA. We believe in full transparency regarding our credentials. Below are our key identifiers, which can be verified publicly through the FMCSA's official channels. Understanding our role is key: we are not a motor carrier; we are a federally authorized intermediary connecting shippers with qualified carriers.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6 not-prose">
+                            <div class="bg-stone-100 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">MC Number</h4>
+                                <p class="text-lg text-gray-900">1245547</p>
+                            </div>
+                            <div class="bg-stone-100 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">USDOT Number</h4>
+                                <p class="text-lg text-gray-900">45457987</p>
+                            </div>
+                            <div class="bg-stone-100 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">Surety Bond/Trust File</h4>
+                                <p class="text-lg text-gray-900">2457824</p>
+                            </div>
+                        </div>
+                        <p>Our status as a licensed broker can be viewed on the FMCSA's Safety and Fitness Electronic Records (SAFER) System. The required surety bond demonstrates our financial responsibility and commitment to fair dealings with our partners.</p>
+                    </section>
+
+                    <section id="ethics" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Anti-Corruption and Anti-Bribery Policy</h3>
+                        <p>Ethical conduct is the cornerstone of our business. This section outlines our strict zero-tolerance policy against all forms of bribery and corruption, aligning with the principles of the Foreign Corrupt Practices Act (FCPA) and all U.S. domestic laws. This policy applies to every employee and agent, ensuring that all business is won and conducted on a fair and honest basis.</p>
+                        <h4>Our Strict Policy</h4>
+                        <p>Knight Gold Freight strictly prohibits bribery, kickbacks, or other corrupt practices. No employee or agent shall offer, promise, give, solicit, or accept any form of bribe or undue advantage to or from any person, including government officials, clients, or carrier representatives.</p>
+                        <h4>Gifts and Hospitality</h4>
+                        <p>While we value business relationships, any courtesy such as a gift, meal, or entertainment must be reasonable, modest, and never intended to gain an unfair business advantage. All such activities must comply with our internal monetary limits and require management approval to ensure they are appropriate and transparent.</p>
+                    </section>
+
+                    <section id="carrier" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Carrier Onboarding and Vetting</h3>
+                        <p>Safety and reliability are paramount in our operations. Our commitment begins with a rigorous, federally compliant qualification process for every motor carrier we partner with. This section details the mandatory criteria a carrier must meet to be part of our network, ensuring that we only work with safe, legal, and properly insured transportation providers. Interacting with this checklist helps clarify our non-negotiable standards for partnership.</p>
+                        <ul class="space-y-4 not-prose my-6">
+                            <li class="flex items-start p-3 bg-stone-50 rounded-md border border-stone-200">
+                                <span class="text-green-600 mr-3 mt-1">✅</span>
+                                <div><strong class="text-gray-800">Active Operating Authority:</strong> Carrier must have an active interstate MC Number for the service type.</div>
+                            </li>
+                            <li class="flex items-start p-3 bg-stone-50 rounded-md border border-stone-200">
+                                <span class="text-green-600 mr-3 mt-1">✅</span>
+                                <div><strong class="text-gray-800">Valid USDOT Number:</strong> Carrier must maintain a valid and active USDOT registration.</div>
+                            </li>
+                            <li class="flex items-start p-3 bg-stone-50 rounded-md border border-stone-200">
+                                <span class="text-green-600 mr-3 mt-1">✅</span>
+                                <div><strong class="text-gray-800">Current Insurance:</strong> Carrier must have required levels of public liability, cargo, and workers' comp insurance, verified via a COI naming us as a certificate holder.</div>
+                            </li>
+                            <li class="flex items-start p-3 bg-stone-50 rounded-md border border-stone-200">
+                                <span class="text-green-600 mr-3 mt-1">✅</span>
+                                <div><strong class="text-gray-800">Satisfactory Safety Rating:</strong> We prioritize carriers with "Satisfactory" FMCSA ratings. "Conditional" or "Unsatisfactory" ratings are typically disqualifying.</div>
+                            </li>
+                             <li class="flex items-start p-3 bg-stone-50 rounded-md border border-stone-200">
+                                <span class="text-red-600 mr-3 mt-1">🚫</span>
+                                <div><strong class="text-gray-800">No Coercion:</strong> We strictly adhere to anti-coercion rules and will never ask a driver to violate HOS or safety regulations.</div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="payment" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Freight Charges and Payment Terms</h3>
+                        <p>This section affirms our commitment to transparent and fair financial practices. We operate based on truth-in-billing principles and adhere to all contractual and federal regulations regarding payment. Clarity and timeliness are key to our relationships with both shippers and carriers.</p>
+                        <h4>Rate Confirmations</h4>
+                        <p>All negotiated rates, accessorial charges, and terms are documented in a legally binding written Rate Confirmation sheet. This is provided to both the shipper and the carrier before any freight is moved to ensure complete alignment.</p>
+                        <h4>Timely Payment to Carriers</h4>
+                        <p>We are committed to paying our carrier partners promptly, as required by federal regulations (49 CFR § 371.3) and our contracts. Our standard QuickPay option ensures payment within 1-3 business days of receiving proper documentation, unless other terms are agreed upon in writing.</p>
+                        <h4>Detention and Accessorials</h4>
+                        <p>We honor all agreed-upon terms for detention, layover, and other accessorial charges. We actively track and audit these charges to ensure they are valid and billed accurately to the responsible party.</p>
+                    </section>
+                    
+                    <section id="privacy" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Recordkeeping and Data Privacy</h3>
+                        <p>In our data-driven industry, we are deeply committed to responsible information management. This section covers our dual obligations: first, to maintain transactional records as required by federal law, and second, to protect the confidentiality and security of all personal and business information entrusted to us in compliance with U.S. data privacy laws.</p>
+                        <h4>FMCSA Recordkeeping</h4>
+                        <p>As a licensed broker, we are required by law (49 CFR Part 371) to retain records of each transaction for a period of three years. This includes names, addresses, rates, and shipment details. These records are maintained in an organized and accessible manner for compliance purposes.</p>
+                        <h4>Data Privacy Commitment</h4>
+                        <p>We comply with all applicable U.S. data privacy laws. Our collection, use, and disclosure of personal information are governed by our detailed Privacy Policy, available on our website. We implement robust security measures to protect data from unauthorized access or disclosure, ensuring the trust of our clients and partners.</p>
+                    </section>
+                    
+                    <section id="policy" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Anti-Harassment and Non-Discrimination</h3>
+                        <p>Knight Gold Freight is an equal opportunity entity and is committed to a professional environment free from discrimination and harassment. This policy is fundamental to our identity and applies to all our interactions, ensuring respectful and fair treatment for everyone we work with.</p>
+                        <p>We prohibit unlawful discrimination or harassment of any kind based on race, color, religion, national origin, sex, age, disability, genetic information, veteran status, or any other legally protected characteristic. This policy applies to all aspects of our relationships with employees, contractors, carriers, and clients.</p>
+                    </section>
+                    
+                    <section id="reporting" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Reporting Violations & Contact Info</h3>
+                        <p>We foster an environment of open and honest communication. This section details our whistleblower policy, encouraging the reporting of any suspected violations of our compliance notice, the law, or ethical standards without fear of retaliation. It also provides clear contact information for any compliance-related questions.</p>
+                        <h4>Whistleblower Policy</h4>
+                        <p>We encourage all stakeholders to report any known or suspected violations. Reports can be made directly to management via email. Knight Gold Freight strictly prohibits retaliation against any individual who, in good faith, reports a possible violation or participates in an investigation.</p>
+                        <h4>Contact for Compliance Questions</h4>
+                        <p>For any questions regarding this notice, our policies, or to request a copy of our insurance or broker authority, please contact us:</p>
+                        <ul class="not-prose">
+                            <li><strong>Email:</strong> <a href="mailto:bramwellgrey.kgf@gmail.com" class="text-indigo-600 hover:underline">bramwellgrey.kgf@gmail.com</a></li>
+                            <li><strong>Website:</strong> <a href="https://bramwellgrey.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">bramwellgrey.blogspot.com</a></li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-stone-300 text-sm">
+                            <strong>Disclaimer:</strong> This Compliance Notice is a statement of our current policies and is for informational purposes only. It does not constitute a legal contract. In the event of any conflict between this Notice and governing law, the law shall control.
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('#compliance-nav a');
+            const contentSections = document.querySelectorAll('#compliance-content .content-section');
+
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'introduction';
+                
+                let sectionToShow = document.getElementById(targetId);
+                if (!sectionToShow) {
+                    sectionToShow = document.getElementById('introduction');
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#introduction');
+
+            const ctx = document.getElementById('complianceChart').getContext('2d');
+            const complianceChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Ethical Standards', 'Carrier Vetting', 'Financial Integrity', 'Data Privacy', 'Legal Adherence'],
+                    datasets: [{
+                        label: 'Commitment to Compliance',
+                        data: [20, 20, 20, 20, 20],
+                        backgroundColor: [
+                            '#3B82F6', // blue-500
+                            '#10B981', // emerald-500
+                            '#F97316', // orange-500
+                            '#6366F1', // indigo-500
+                            '#84CC16'  // lime-500
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
