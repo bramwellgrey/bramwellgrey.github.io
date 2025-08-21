@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Knight Gold Freight (Bramwell Grey)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application is structured with a fixed sidebar for navigation and a dynamic main content area. This design was chosen to break down the extensive FAQ list into manageable, thematic sections. It allows users to quickly jump to questions relevant to their role (Carrier or Shipper) without endless scrolling. This non-linear, interactive approach enhances usability and comprehension, making a large document more approachable for all users. On mobile, the sidebar collapses into a top navigation button for a clean, responsive layout. -->
+    <!-- Visualization & Content Choices: Report Info: FAQ categories. -> Goal: Inform, Organize, Direct. -> Viz/Presentation Method: The core is well-structured Q&A text. Sections for "Carriers" and "Shippers" are visually distinguished with a subtle, color-coded background to help users immediately orient themselves. Icons are used in the navigation menu to provide a visual cue for each section. There is no numerical data, so no charts are used. -> Interaction: Users click sidebar links to dynamically load content into the main view. This is managed by vanilla JS that toggles section visibility and updates the URL hash for deep linking. -> Justification: This combination of interactive navigation and targeted visual separation ensures users can find and process information efficiently, which is crucial for a business-oriented FAQ page. -> Library/Method: Vanilla JS, Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #FEF3C7;
+            color: #B45309;
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Frequently Asked Questions</h1>
+                <button id="mobile-nav-toggle" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
+                    <span class="text-2xl">☰</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobile-nav" class="md:hidden bg-stone-100 py-2 hidden">
+            <nav class="flex flex-col space-y-1 mx-4">
+                <a href="#carriers-drivers" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    For Carriers & Drivers
+                </a>
+                <a href="#shippers-brokers" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    For Shippers & Brokers
+                </a>
+                <a href="#general-questions" class="nav-link p-3 rounded-md text-gray-600 hover:bg-stone-200 hover:text-gray-900">
+                    General Questions
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0 hidden md:block">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">FAQ Sections</h2>
+                    <nav id="policy-nav" class="space-y-1">
+                        <a href="#carriers-drivers" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🚚</span> For Carriers & Drivers
+                        </a>
+                        <a href="#shippers-brokers" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📦</span> For Shippers & Brokers
+                        </a>
+                        <a href="#general-questions" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🌍</span> General Questions
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="policy-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="introduction" class="content-section prose max-w-none">
+                        <p class="text-xs text-gray-500 mb-4"><strong>Last Updated:</strong> May 16, 2024</p>
+                        <h2 class="text-3xl font-bold mb-4 text-gray-900">Welcome to our FAQ Page</h2>
+                        <p>We've compiled answers to the most common questions from our carrier and shipper partners. We believe in transparency and clear communication, and this page is designed to provide you with the information you need quickly and easily.</p>
+                        <p>Please select a category from the navigation menu to get started.</p>
+                    </section>
+                    
+                    <section id="carriers-drivers" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900">For Carriers & Drivers</h3>
+                        <p class="text-sm italic text-gray-500 mb-6">Answers to questions specific to our carrier and driver partners.</p>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q1: What do I need to start working with Knight Gold Freight as a carrier?</h4>
+                                <p><strong>A:</strong> To become an approved carrier in our network, you must provide the following:</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>A valid MC Number (Motor Carrier Number) and DOT Number.</li>
+                                    <li>Proof of current cargo and liability insurance with required minimum coverage and list "Knight Gold Freight" as a certificate holder.</li>
+                                    <li>A completed W-9 form.</li>
+                                    <li>A signed Carrier Agreement.</li>
+                                    <li>References may be requested for new authorities.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q2: How do you find loads for me?</h4>
+                                <p><strong>A:</strong> We leverage a combination of our established relationships with shippers, load boards, and our proprietary database to match your truck's location, type, and capacity with available freight. We focus on finding loads that maximize your revenue and minimize deadhead miles.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q3: How and when will I get paid?</h4>
+                                <p><strong>A:</strong> We pride ourselves on quick and reliable payment. Our standard payment term is <strong>QuickPay within 1-3 business days</strong> after you submit the signed Bill of Lading (BOL) and any other required documents. All payments are made via direct deposit or ACH transfer.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q4: What is your policy on detention, layover, and tonu (truck ordered not used) pay?</h4>
+                                <p><strong>A:</strong> We advocate fiercely for our drivers' time.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li><strong>Detention:</strong> We track your time at shipper/receiver facilities. After the standard 2-hour free time, we pass 100% of the detention fee on to you.</li>
+                                    <li><strong>Layover:</strong> If a load is not ready and causes you to wait for a next-day appointment, we secure layover pay for you.</li>
+                                    <li><strong>TONU:</strong> If you arrive at a pickup location and the load is cancelled, we will charge the shipper a TONU fee, which you will receive in full.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q5: What happens if there is a claim for damaged or lost freight?</h4>
+                                <p><strong>A:</strong> As the carrier, you are responsible for the freight from the moment you take possession until it is delivered. We will assist in facilitating the claims process between you and the shipper. We require that you have valid cargo insurance. Immediately notify us of any damage discovered at pickup or delivery.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q6: Who handles communication with the shipper and receiver?</h4>
+                                <p><strong>A:</strong> We do. You communicate any issues (delays, breakdowns, problems at the dock) directly to your dedicated dispatcher at Knight Gold Freight. We will handle all communications with the customer, saving you time and stress.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q7: Do you offer dedicated lanes or consistent freight?</h4>
+                                <p><strong>A:</strong> Yes. We have several shipper clients with recurring freight needs. Consistent, reliable carriers who perform well are first in line for these dedicated lane opportunities.</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="shippers-brokers" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900">For Shippers & Brokers</h3>
+                        <p class="text-sm italic text-gray-500 mb-6">Answers to questions specific to our shipper and broker clients.</p>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q8: What is the difference between a broker and a dispatcher? Who are you?</h4>
+                                <p><strong>A:</strong> Knight Gold Freight operates as a <strong>freight broker</strong>. We are licensed, bonded, and insured to arrange transportation between you (the shipper) and a motor carrier. We handle the entire process: sourcing, vetting, booking, tracking, and paperwork.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q9: How do you vet your carriers?</h4>
+                                <p><strong>A:</strong> Carrier safety is our top priority. Our vetting process is rigorous and includes:
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Verifying active MC/DOT numbers via the FMCSA SaferSys.</li>
+                                    <li>Confirming current insurance coverage and requiring certificates directly from the insurer.</li>
+                                    <li>Reviewing safety ratings and inspection history.</li>
+                                    <li>Checking for out-of-service violations.</li>
+                                </ul>
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q10: How are rates determined?</h4>
+                                <p><strong>A:</strong> Freight rates are dynamic and based on several factors, including market conditions, load details (weight, dimensions), and accessorials (e.g., lumper services). We use industry tools and our market expertise to provide you with a fair and competitive rate.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q11: What is your process for tracking shipments?</h4>
+                                <p><strong>A:</strong> We provide proactive tracking. We will notify you immediately of any delays or issues and work on solutions. We use automated ELD integration and direct communication with the driver to monitor pickup, in-transit progress, and delivery.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q12: What paperwork is required, and how is it handled?</h4>
+                                <p><strong>A:</strong> We streamline the paperwork process digitally. We prepare the Rate Confirmation sheet and, after delivery, we collect the signed Bill of Lading (BOL) and Proof of Delivery (POD) from the carrier. We process these documents and invoice you electronically.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q13: What is your claims process for damaged freight?</h4>
+                                <p><strong>A:</strong> While the carrier is legally liable for cargo damage, we manage the entire claims process on your behalf. You must note any damage on the delivery receipt and notify us within 24 hours of delivery. We will immediately file a claim with the carrier's insurance company and act as your advocate.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q14: What are your payment terms?</h4>
+                                <p><strong>A:</strong> Our standard payment terms for shippers are <strong>Net 15 or Net 30</strong> from the date of invoice. For new clients, we may require payment before the load is booked until credit is established.</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="general-questions" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900">General Questions for Everyone</h3>
+                        <p class="text-sm italic text-gray-500 mb-6">Answers to questions relevant to all partners.</p>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q15: What are your hours of operation?</h4>
+                                <p><strong>A:</strong> Our dispatch and customer service operations are available from <strong>8:00 AM to 6:00 PM EST, Monday through Friday.</strong> We provide an emergency phone number for active shipments after hours.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q16: How do I get in touch with Knight Gold Freight?</h4>
+                                <p><strong>A:</strong> The best way to reach us is via email at <strong><a href="mailto:bramwellgrey.kgf@gmail.com" class="text-blue-600 hover:underline">bramwellgrey.kgf@gmail.com</a></strong> for non-urgent matters. For urgent issues regarding an active load, please call our main dispatch line at <strong>[Insert Phone Number Here]</strong>. You can also learn more on our website: <a href="https://bramwellgrey.blogspot.com/" class="text-blue-600 hover:underline">https://bramwellgrey.blogspot.com/</a>.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q17: How do you handle disputes or issues?</h4>
+                                <p><strong>A:</strong> We believe in direct and honest communication. If any issue arises, please contact us immediately. We are committed to finding a fair and swift resolution and document all communication for transparency.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q18: Do you handle international shipments to/from Canada or Mexico?</h4>
+                                <p><strong>A:</strong> Currently, Knight Gold Freight focuses on domestic freight within the contiguous 48 United States. We do not currently broker loads requiring cross-border documentation.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Q19: How can I provide feedback on your service?</h4>
+                                <p><strong>A:</strong> We thrive on feedback! Please email us at <strong><a href="mailto:bramwellgrey.kgf@gmail.com" class="text-blue-600 hover:underline">bramwellgrey.kgf@gmail.com</a></strong> with your comments, suggestions, or concerns. We are always looking for ways to improve our service for both our carriers and our shippers.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <footer class="mt-12 pt-6 border-t border-stone-200 text-sm text-gray-500 italic">
+                        <p><strong>Disclaimer:</strong> This FAQ is for informational purposes only and does not constitute a legal agreement. Specific terms and conditions are outlined in our official Carrier and Shipper Agreements. Policies and procedures are subject to change.</p>
+                    </footer>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopNavLinks = document.querySelectorAll('#policy-nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+            const navToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const contentSections = document.querySelectorAll('#policy-content .content-section');
+            const introSection = document.getElementById('introduction');
+            
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'introduction';
+                let sectionToShow = document.getElementById(targetId);
+                
+                if (!sectionToShow) {
+                    sectionToShow = introSection;
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                desktopNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            desktopNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                    mobileNav.classList.add('hidden');
+                });
+            });
+
+            navToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#introduction');
+        });
+    </script>
+</body>
+</html>
