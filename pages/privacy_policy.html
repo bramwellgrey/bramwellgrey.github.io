@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Bramwell Grey (Knight Gold Freight)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Professional -->
+    <!-- Application Structure Plan: The application is structured with a fixed sidebar for navigation and a dynamic main content area. This design was chosen to deconstruct the dense, linear privacy policy into manageable, thematic sections. It empowers users to instantly access specific information (e.g., "Data Protection Rights") without scrolling through irrelevant text. This non-linear, interactive approach significantly enhances usability and comprehension compared to a static document, making a complex legal text more approachable for all users. -->
+    <!-- Visualization & Content Choices: Report Info: Privacy policy sections. -> Goal: Inform, Organize, Clarify. -> Viz/Presentation Method: The core is well-structured text. A doughnut chart is used in the "Information We Collect" section to visually categorize the types of data gathered, providing a quick mental model. The "Your Rights" section uses a card-based layout with icons to make each right distinct and easily digestible. -> Interaction: Users click sidebar links to dynamically load content into the main view. This is managed by vanilla JS that toggles section visibility and updates the URL hash for deep linking. -> Justification: This combination of interactive navigation and targeted visualization makes the legal information less intimidating and easier to process. -> Library/Method: Vanilla JS, Tailwind CSS, Chart.js. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #FEF3C7; /* bg-amber-100 */
+            color: #B45309; /* text-amber-700 */
+            font-weight: 600;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px;
+            max-height: 320px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm w-full p-4 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Privacy Policy</h1>
+                <p class="text-sm text-gray-500">Bramwell Grey (Knight Gold Freight)</p>
+            </div>
+        </header>
+
+        <div class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                
+                <aside class="w-full md:w-1/4 lg:w-1/5 mb-6 md:mb-0">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-700 border-b pb-2">Policy Sections</h2>
+                    <nav id="policy-nav" class="space-y-1">
+                        <a href="#introduction" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">👋</span> Introduction
+                        </a>
+                        <a href="#collection" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">📥</span> Information We Collect
+                        </a>
+                        <a href="#usage" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">⚙️</span> How We Use It
+                        </a>
+                        <a href="#sharing" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🤝</span> Sharing & Disclosure
+                        </a>
+                        <a href="#rights" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                            <span class="mr-3 text-lg">🛡️</span> Your Rights
+                        </a>
+                        <a href="#security" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                             <span class="mr-3 text-lg">🔒</span> Data Security
+                        </a>
+                        <a href="#retention" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                             <span class="mr-3 text-lg">⏳</span> Data Retention
+                        </a>
+                        <a href="#contact" class="nav-link flex items-center p-3 rounded-md text-gray-600 hover:bg-stone-100 hover:text-gray-900">
+                             <span class="mr-3 text-lg">✉️</span> Contact Us
+                        </a>
+                    </nav>
+                </aside>
+
+                <main id="policy-content" class="w-full md:w-3/4 lg:w-4/5 bg-white p-6 md:p-8 rounded-lg shadow-sm border border-stone-200">
+                    
+                    <section id="introduction" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h3>
+                        <p>Welcome to Bramwell Grey, the online portal for Knight Gold Freight. This section introduces our commitment to protecting your privacy. It explains that by using our website or services, you consent to the data practices described in this policy. We encourage you to read this document carefully to understand how we handle your personal data.</p>
+                        <div class="mt-6 p-4 bg-stone-50 border-l-4 border-stone-300 text-sm">
+                            Our goal is to be transparent about how we collect, use, and protect your personal information across all our dispatch and freight services.
+                        </div>
+                    </section>
+
+                    <section id="collection" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">2. Information We Collect</h3>
+                        <p>To provide our services effectively, we collect certain information. This section breaks down the types of data we gather, which fall into three main categories: information you provide directly, data collected automatically through our website, and information we may receive from third-party partners. The chart below gives a high-level overview of these categories.</p>
+                        <div class="chart-container my-8">
+                            <canvas id="dataCollectionChart"></canvas>
+                        </div>
+                        <h4>A. Information You Provide Directly:</h4>
+                        <ul>
+                            <li><strong>Contact Information:</strong> Name, company, email, phone number, physical address.</li>
+                            <li><strong>Shipment Details:</strong> Goods description, value, dimensions, weight, pickup/delivery addresses, and recipient contact info.</li>
+                            <li><strong>Business Information:</strong> FEIN, DOT/MC numbers, and insurance details for clients or carriers.</li>
+                            <li><strong>Correspondence:</strong> Records of your emails and other communications with us.</li>
+                        </ul>
+                        <h4>B. Information Collected Automatically:</h4>
+                        <ul>
+                            <li><strong>Log Data:</strong> IP address, browser type, pages visited, and timestamps.</li>
+                            <li><strong>Cookies:</strong> We use cookies to track activity. You can manage cookie preferences in your browser.</li>
+                        </ul>
+                        <h4>C. Information from Third Parties:</h4>
+                        <ul>
+                            <li><strong>Carriers and Partners:</strong> Shipment status updates.</li>
+                            <li><strong>Publicly Available Sources:</strong> For business verification.</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="usage" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">3. How We Use Your Information</h3>
+                        <p>We use the information we collect for specific business purposes, all aimed at providing you with reliable and efficient service. This includes managing logistics, communicating with you, improving our operations, and ensuring security.</p>
+                        <ul>
+                            <li><strong>To Provide and Manage Services:</strong> Facilitating dispatch, coordinating freight, generating quotes, tracking shipments, and handling payments.</li>
+                            <li><strong>Communication:</strong> Responding to inquiries, sending service updates, and providing customer support.</li>
+                            <li><strong>Business Operations:</strong> Managing relationships, maintaining records, and improving service quality.</li>
+                            <li><strong>Marketing:</strong> With your consent, sending newsletters or promotional materials, which you can opt-out of at any time.</li>
+                            <li><strong>Security and Fraud Prevention:</strong> Monitoring for and preventing illegal activities to protect our company and clients.</li>
+                        </ul>
+                    </section>
+
+                    <section id="sharing" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">5. How We Share and Disclose Your Information</h3>
+                        <p>We do not sell your personal information. We only share it in limited, necessary circumstances to provide our services or comply with legal obligations. This section details who we might share your data with.</p>
+                        <ul>
+                            <li><strong>With Freight Carriers and Partners:</strong> Shipment details are shared with drivers and logistics partners to transport and deliver your freight.</li>
+                            <li><strong>Service Providers:</strong> We use trusted third parties for functions like email communication and data analysis. They only have access to the information needed to perform their tasks.</li>
+                            <li><strong>For Legal Reasons:</strong> We may disclose information if required by law or valid requests from public authorities.</li>
+                            <li><strong>Business Transfers:</strong> If we are involved in a merger or acquisition, your information may be transferred, with prior notice.</li>
+                            <li><strong>With Your Consent:</strong> We may share your information for any other purpose with your explicit consent.</li>
+                        </ul>
+                    </section>
+
+                    <section id="rights" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">7. Your Data Protection Rights</h3>
+                        <p>We respect your control over your personal information. Depending on your location, you have specific rights regarding your data. This section outlines those rights and explains how you can exercise them. To make a request related to any of these rights, please contact us at our official email address.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+                            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">Access & Portability</h4>
+                                <p class="text-sm">Request copies of your data or ask for it to be transferred.</p>
+                            </div>
+                            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">Rectification</h4>
+                                <p class="text-sm">Request correction of inaccurate or incomplete information.</p>
+                            </div>
+                            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">Erasure</h4>
+                                <p class="text-sm">Request that we erase your personal data, under certain conditions.</p>
+                            </div>
+                            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                                <h4 class="font-semibold text-gray-700">Restrict or Object</h4>
+                                <p class="text-sm">Object to or request restriction of our data processing.</p>
+                            </div>
+                             <div class="bg-stone-50 p-4 rounded-lg border border-stone-200 col-span-1 md:col-span-2">
+                                <h4 class="font-semibold text-gray-700">Withdraw Consent</h4>
+                                <p class="text-sm">Withdraw your consent for marketing or other consent-based processing at any time.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="security" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">8. Data Security</h3>
+                        <p>The security of your data is a top priority. We implement appropriate technical and organizational measures designed to protect the security of any personal information we process. However, it's important to recognize that no method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.</p>
+                    </section>
+
+                    <section id="retention" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">6. Data Retention</h3>
+                        <p>We retain your personal information only for as long as necessary for the purposes outlined in this policy. Our retention periods are determined by our need to comply with legal obligations (such as tax and business record laws), resolve disputes, and enforce our agreements. Once the information is no longer needed for these purposes, it is securely deleted.</p>
+                    </section>
+
+                    <section id="contact" class="content-section prose max-w-none">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">13. Contact Us</h3>
+                        <p>If you have any questions, concerns, or complaints about this Privacy Policy or our data practices, please do not hesitate to contact us. We are committed to addressing your inquiries promptly and transparently.</p>
+                        <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 text-sm not-prose">
+                            <p class="font-semibold">Email for All Inquiries:</p>
+                            <a href="mailto:bramwellgrey.kgf@gmail.com" class="text-amber-700 hover:underline font-medium">bramwellgrey.kgf@gmail.com</a>
+                        </div>
+                        <h4 class="mt-6">Additional Topics</h4>
+                        <ul>
+                            <li><strong>International Transfers:</strong> Your data may be transferred to and processed in the United States. Your consent to this policy represents your agreement to that transfer.</li>
+                            <li><strong>Children's Privacy:</strong> Our services are not for individuals under 18. We do not knowingly collect data from children.</li>
+                            <li><strong>Links to Other Sites:</strong> We are not responsible for the privacy practices of third-party sites linked from our service.</li>
+                            <li><strong>Policy Changes:</strong> We may update this policy periodically. Changes are effective when posted on this page.</li>
+                        </ul>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('#policy-nav a');
+            const contentSections = document.querySelectorAll('#policy-content .content-section');
+
+            function showContent(hash) {
+                const targetId = hash ? hash.substring(1) : 'introduction';
+                
+                let sectionToShow = document.getElementById(targetId);
+                if (!sectionToShow) {
+                    sectionToShow = document.getElementById('introduction');
+                }
+
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                sectionToShow.classList.add('active');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash);
+                    showContent(targetHash);
+                });
+            });
+
+            window.addEventListener('popstate', () => {
+                showContent(window.location.hash);
+            });
+
+            showContent(window.location.hash || '#introduction');
+
+            const ctx = document.getElementById('dataCollectionChart').getContext('2d');
+            const dataCollectionChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Provided Directly', 'Collected Automatically', 'From Third Parties'],
+                    datasets: [{
+                        label: 'Data Collection Methods',
+                        data: [55, 25, 20],
+                        backgroundColor: [
+                            '#3B82F6', // blue-500
+                            '#F97316', // orange-500
+                            '#10B981'  // emerald-500
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                           enabled: true,
+                           callbacks: {
+                               label: function(context) {
+                                   let label = context.label || '';
+                                   if (label) {
+                                       label += ': ';
+                                   }
+                                   if (context.parsed !== null) {
+                                       label += context.parsed + '%';
+                                   }
+                                   return label;
+                               }
+                           }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
